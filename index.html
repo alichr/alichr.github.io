@@ -400,6 +400,24 @@
         .scholar-link:hover {
             color: white;
         }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: block;
+            border: 4px solid var(--secondary-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -407,6 +425,7 @@
 <body>
     <header>
         <div class="header-content">
+            <img src="profile.jpg" alt="Ali Cheraghian" class="profile-photo">
             <h1>Ali Cheraghian</h1>
             <div class="title">Research Scientist | AI & Machine Learning Expert</div>
             <div class="contact-links">
