@@ -616,16 +616,44 @@
     <script>
         const ctx = document.getElementById('citationChart').getContext('2d');
         new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                 datasets: [{
                     label: 'Citations',
                     data: [35, 82, 64, 31, 20, 82, 36, 59],
-                    borderColor: '#002b5e',
-                    backgroundColor: 'rgba(0, 43, 94, 0.1)',
-                    tension: 0.4,
-                    fill: true
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',   // Pink
+                        'rgba(54, 162, 235, 0.7)',   // Blue
+                        'rgba(255, 206, 86, 0.7)',   // Yellow
+                        'rgba(75, 192, 192, 0.7)',   // Teal
+                        'rgba(153, 102, 255, 0.7)',  // Purple
+                        'rgba(255, 159, 64, 0.7)',   // Orange
+                        'rgba(46, 204, 113, 0.7)',   // Green
+                        'rgba(142, 68, 173, 0.7)'    // Deep Purple
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 206, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 159, 64)',
+                        'rgb(46, 204, 113)',
+                        'rgb(142, 68, 173)'
+                    ],
+                    borderWidth: 1,
+                    borderRadius: 5,
+                    hoverBackgroundColor: [
+                        'rgba(255, 99, 132, 0.9)',
+                        'rgba(54, 162, 235, 0.9)',
+                        'rgba(255, 206, 86, 0.9)',
+                        'rgba(75, 192, 192, 0.9)',
+                        'rgba(153, 102, 255, 0.9)',
+                        'rgba(255, 159, 64, 0.9)',
+                        'rgba(46, 204, 113, 0.9)',
+                        'rgba(142, 68, 173, 0.9)'
+                    ]
                 }]
             },
             options: {
@@ -641,13 +669,31 @@
                         beginAtZero: true,
                         grid: {
                             color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Montserrat'
+                            }
                         }
                     },
                     x: {
                         grid: {
                             display: false
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Montserrat'
+                            }
                         }
                     }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeInOutQuart'
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
                 }
             }
         });
