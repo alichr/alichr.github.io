@@ -615,22 +615,22 @@
 
     <script>
         const ctx = document.getElementById('citationChart').getContext('2d');
-        const chart = new Chart(ctx, {
+        new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
                 datasets: [{
                     label: 'Citations',
-                    data: [], // Will be populated dynamically
+                    data: [5, 8, 26, 43, 120, 208, 236, 59], // Updated with your provided numbers
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.7)',   
-                        'rgba(54, 162, 235, 0.7)',   
-                        'rgba(255, 206, 86, 0.7)',   
-                        'rgba(75, 192, 192, 0.7)',   
-                        'rgba(153, 102, 255, 0.7)',  
-                        'rgba(255, 159, 64, 0.7)',   
-                        'rgba(46, 204, 113, 0.7)',   
-                        'rgba(142, 68, 173, 0.7)'    
+                        'rgba(255, 99, 132, 0.7)',   // Pink
+                        'rgba(54, 162, 235, 0.7)',   // Blue
+                        'rgba(255, 206, 86, 0.7)',   // Yellow
+                        'rgba(75, 192, 192, 0.7)',   // Teal
+                        'rgba(153, 102, 255, 0.7)',  // Purple
+                        'rgba(255, 159, 64, 0.7)',   // Orange
+                        'rgba(46, 204, 113, 0.7)',   // Green
+                        'rgba(142, 68, 173, 0.7)'    // Deep Purple
                     ],
                     borderColor: [
                         'rgb(255, 99, 132)',
