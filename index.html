@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ali Cheraghian - Research Scientist specializing in AI, Machine Learning, and Computer Vision">
     <title>Ali Cheraghian - Research Scientist</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary-color: #002b5e;
@@ -113,20 +114,32 @@
         }
 
         .news-section {
-            max-width: 600px;
-            margin: 2rem auto;
+            max-width: 800px;
+            margin: 3rem auto;
             text-align: left;
-            background: #fff;
-            padding: 1.5rem;
+            background: var(--card-bg);
+            padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .news-section h2 {
-            text-align: center;
-            margin-bottom: 1rem;
+            text-align: left;
+            margin-bottom: 1.5rem;
             color: var(--primary-color);
             font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .news-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
         }
 
         .news-section ul {
@@ -137,36 +150,194 @@
 
         .news-section li {
             position: relative;
-            padding-left: 1.5em;
-            margin-bottom: 1rem;
+            padding: 0.8rem 0;
+            margin-bottom: 0.5rem;
             color: var(--text-color);
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(0, 43, 94, 0.1);
+        }
+
+        .news-section li:last-child {
+            border-bottom: none;
         }
 
         .news-section li:before {
             content: "•";
             position: absolute;
-            left: 0;
+            left: -1rem;
             color: var(--primary-color);
         }
 
         .news-section a {
             color: var(--primary-color);
             text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            transition: color 0.2s ease;
         }
 
         .news-section a:hover {
             color: var(--hover-color);
-            text-decoration: underline;
         }
 
         main {
             padding: 2rem;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .citation-graph {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            height: 300px;
+        }
+
+        .citation-graph h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .citation-stats {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .citation-stats h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0, 43, 94, 0.1);
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .stat-value {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .publications-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            text-align: left;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .publications-section h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .publications-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .publications-list {
+            margin-top: 2rem;
+        }
+
+        .publications-list h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .publications-list h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .publications-list h4:first-child {
+            margin-top: 0;
+        }
+
+        .publications-list ul {
+            margin-bottom: 1rem;
+        }
+
+        .publications-list ul:last-child {
+            margin-bottom: 0;
+        }
+
+        .publications-list li {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 43, 94, 0.1);
+            line-height: 1.6;
+        }
+
+        .publication-thumbnail {
+            flex-shrink: 0;
+            width: 120px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .publication-thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        .publication-content {
+            flex: 1;
+        }
+
+        .publications-list strong {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .publications-list br {
+            content: "";
+            display: block;
+            margin: 0.3rem 0;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -195,11 +366,292 @@
         <div class="news-section">
             <h2>News</h2>
             <ul>
-                <li>We have one paper accepted at <a href="https://openaccess.thecvf.com/content/WACV2025/papers/Dastmalchi_Test-Time_Adaptation_of_3D_Point_Clouds_via_Denoising_Diffusion_Models_WACV_2025_paper.pdf" target="_blank">WACV 2025</a>.</li>
-                <li>We have one paper accepted at <a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/05717.pdf" target="_blank">ECCV 2024</a>.</li>
+                <li>Our work on Test-time Adaptation on Noisy 3D Point Clouds has been accepted to WACV'25</li>
+                <li>Our work on Test-time Adaptation on Noisy 3D Point Clouds has been accepted to ECCV'24</li>
             </ul>
         </div>
+
+        <div class="publications-section">
+            <h2>Publications</h2>
+            <div class="stats-container">
+                <div class="citation-graph">
+                    <h3>Citations Over Time</h3>
+                    <canvas id="citationChart"></canvas>
+                </div>
+                <div class="citation-stats">
+                    <h3>Citation Metrics</h3>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Citations</span>
+                        <span class="stat-value">719</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">h-index</span>
+                        <span class="stat-value">11</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">i10-index</span>
+                        <span class="stat-value">11</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="publications-list">
+                <h3>Publications</h3>
+                
+                <h4>2025</h4>
+                <ul>
+                    <li>
+                        <img src="./images/papers/Test_Time_Adaptation_3D_Point_Clouds.webp" alt="Test-Time Adaptation paper" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Test-Time Adaptation of 3D Point Clouds via Denoising Diffusion Models</strong><br>
+                            H Dastmalchi, A An, A Cheraghian, S Rahman, S Ramasinghe<br>
+                            WACV 2025
+                        </div>
+                    </li>
+                </ul>
+
+                <h4>2024</h4>
+                <ul>
+                    <li>
+                        <img src="./images/papers/Task_Progressive_Curriculum.webp" alt="Task Progressive Curriculum" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Task Progressive Curriculum Learning for Robust Visual Question Answering</strong><br>
+                            A Akl, A Khamis, Z Wang, A Cheraghian, S Khalifa, K Wang<br>
+                            arXiv preprint 2024
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/Efficient_Atmospheric_Correction.webp" alt="Atmospheric Correction" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Efficient Atmospheric Correction for Onboard Processing Using Knowledge Distillation and Model Compression</strong><br>
+                            M Zhang, A Cheraghian, Y Qin, D Benn, T Rollan, N Habili<br>
+                            DICTA 2024
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/Enhancing_Glaucoma_Diagnosis.webp" alt="Glaucoma Diagnosis" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Enhancing Glaucoma Diagnosis through Vision-Language Models and Large Language Model Descriptions</strong><br>
+                            HY Bae, M Saberi, S Shariflou, M Kalloniatis, J Phu, A Agar, A Cheraghian<br>
+                            DICTA 2024
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/Backpropagation-free_Network_for_3D_Test-time_Adaptation.webp" alt="Backpropagation-free Network for 3D Test-time Adaptation" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Backpropagation-free Network for 3D Test-time Adaptation</strong><br>
+                            Y Wang, A Cheraghian, Z Hayder, J Hong, S Ramasinghe, S Rahman<br>
+                            CVPR 2024
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/Continual_test-time_domain_adaptation_via_dynamic_sample_selection.webp" alt="Continual test-time domain adaptation via dynamic sample selection" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Continual test-time domain adaptation via dynamic sample selection</strong><br>
+                            Y Wang, J Hong, A Cheraghian, S Rahman, D Ahmedt-Aristizabal<br>
+                            WACV 2024
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/Canonical_shape_projection_is_all_you_need_for_3d_few-shot_class_incremental_learning.webp" alt="Canonical shape projection is all you need for 3d few-shot class incremental learning" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Canonical shape projection is all you need for 3d few-shot class incremental learning</strong><br>
+                            A Cheraghian, Z Hayder, S Ramasinghe, S Rahman, J Jafaryahya<br>
+                            ECCV 2024
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/Foundation_Model-Powered_3D_Few-Shot_Class_Incremental_Learning_via_Training-free_Adaptor.webp" alt="Foundation Model-Powered 3D Few-Shot Class Incremental Learning via Training-free Adaptor" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Foundation Model-Powered 3D Few-Shot Class Incremental Learning via Training-free Adaptor</strong><br>
+                            S Ahmadi, A Cheraghian, M Saberi, MT Abir, H Dastmalchi, F Hussain<br>
+                            ACCV 2024
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/3D_Point_Cloud_Network_Pruning_When_Some_Weights_Do_not_Matter.webp" alt="3D Point Cloud Network Pruning When Some Weights Do not Matter" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>3D Point Cloud Network Pruning: When Some Weights Do not Matter</strong><br>
+                            A Biswas, MI Hossain, MM Elahi, A Cheraghian, F Rahman<br>
+                            BMVC 2024
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/3D_scene_generation_for_zero-shot_learning_using_ChatGPT_guided_language_prompts.webp" alt="3D scene generation for zero-shot learning using ChatGPT guided language prompts" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>3D scene generation for zero-shot learning using ChatGPT guided language prompts</strong><br>
+                            S Ahmadi, A Cheraghian, TF Chowdhury, M Saberi, S Rahman<br>
+                            CVIU 2024
+                        </div>
+                    </li>
+                </ul>
+
+                <h4>2023</h4>
+                <ul>
+                    <li>
+                        <img src="./images/papers/ChatGPT-guided_Semantics_for_Zero-shot_Learning.webp" alt="ChatGPT-guided Semantics for Zero-shot Learning" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>ChatGPT-guided Semantics for Zero-shot Learning</strong><br>
+                            FH Shubho, TF Chowdhury, A Cheraghian, M Saberi, N Mohammed<br>
+                            DICTA 2023
+                        </div>
+                    </li>
+                </ul>
+
+                <h4>2022</h4>
+                <ul>
+                    <li>
+                        <img src="./images/papers/Zero-shot_learning_on_3d_point_cloud_objects_and_beyond.webp" alt="Zero-shot learning on 3d point cloud objects and beyond" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Zero-shot learning on 3d point cloud objects and beyond</strong><br>
+                            A Cheraghian, S Rahman, TF Chowdhury, D Campbell, L Petersson<br>
+                            IJCV 2022
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/Few-shot_class-incremental_learning_for_3d_point_cloud_objects.webp" alt="Few-shot class-incremental learning for 3d point cloud objects" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Few-shot class-incremental learning for 3d point cloud objects</strong><br>
+                            T Chowdhury, A Cheraghian, S Ramasinghe, S Ahmadi, M Saberi<br>
+                            ECCV 2022
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/Prompt-guided_scene_generation_for_3d_zero-shot_learning.webp" alt="Prompt-guided scene generation for 3d zero-shot learning" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Prompt-guided scene generation for 3d zero-shot learning</strong><br>
+                            M Nasiri, A Cheraghian, TF Chowdhury, S Ahmadi, M Saberi, S Rahman<br>
+                            DICTA 2022
+                        </div>
+                    </li>
+                </ul>
+
+                <h4>2021</h4>
+                <ul>
+                    <li>
+                        <img src="./images/papers/Semantic-aware_knowledge_distillation_for_few-shot_class-incremental_learning.webp" alt="Semantic-aware knowledge distillation for few-shot class-incremental learning" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Semantic-aware knowledge distillation for few-shot class-incremental learning</strong><br>
+                            A Cheraghian, S Rahman, P Fang, SK Roy, L Petersson, M Harandi<br>
+                            CVPR 2021
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/Synthesized_feature_based_few-shot_class-incremental_learning_on_a_mixture_of_subspaces.webp" alt="Synthesized feature based few-shot class-incremental learning on a mixture of subspaces" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Synthesized feature based few-shot class-incremental learning on a mixture of subspaces</strong><br>
+                            A Cheraghian, S Rahman, S Ramasinghe, P Fang, C Simon, L Petersson<br>
+                            ICCV 2021
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/Learning_without_forgetting_for_3d_point_cloud_objects.webp" alt="Learning without forgetting for 3d point cloud objects" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Learning without forgetting for 3d point cloud objects</strong><br>
+                            T Chowdhury, M Jalisha, A Cheraghian, S Rahman<br>
+                            IWANN 2021
+                        </div>
+                    </li>
+                </ul>
+
+                <h4>2020</h4>
+                <ul>
+                    <li>
+                        <img src="./images/papers/Transductive_zero-shot_learning_for_3d_point_cloud_classification.webp" alt="Transductive zero-shot learning for 3d point cloud classification" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Transductive zero-shot learning for 3d point cloud classification</strong><br>
+                            A Cheraghian, S Rahman, D Campbell, L Petersson<br>
+                            WACV 2020
+                        </div>
+                    </li>
+                </ul>
+
+                <h4>Earlier Publications</h4>
+                <ul>
+                    <li>
+                        <img src="./images/papers/Zero-shot_learning_of_3d_point_cloud_objects.webp" alt="Zero-shot learning of 3d point cloud objects" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Zero-shot learning of 3d point cloud objects</strong><br>
+                            A Cheraghian, S Rahman, L Petersson<br>
+                            MVA 2019
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/3dcapsule_Extending_the_capsule_architecture_to_classify_3d_point_clouds.webp" alt="3dcapsule Extending the capsule architecture to classify 3d point clouds" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>3dcapsule: Extending the capsule architecture to classify 3d point clouds</strong><br>
+                            A Cheraghian, L Petersson<br>
+                            WACV 2019
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/Surface_geodesic_pattern_for_3D_deformable_texture_matching.webp" alt="Surface geodesic pattern for 3D deformable texture matching" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>Surface geodesic pattern for 3D deformable texture matching</strong><br>
+                            F Hajati, A Cheraghian, S Gheisari, Y Gao, AS Mian<br>
+                            Pattern Recognition 2017
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/2.5_D_Face_Recognition_Using_Gabor_Discrete_Cosine_Transform.webp" alt="2.5 D Face Recognition Using Gabor Discrete Cosine Transform" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>2.5 D Face Recognition Using Gabor Discrete Cosine Transform</strong><br>
+                            A Cheraghian, F Hajati, S Gheisari, Y Gao<br>
+                            IJCEA 2016
+                        </div>
+                    </li>
+                    <li>
+                        <img src="./images/papers/An_efficient_multimodal_face_recognition_method_robust_to_pose_variation.webp" alt="An efficient multimodal face recognition method robust to pose variation" class="publication-thumbnail" loading="lazy">
+                        <div class="publication-content">
+                            <strong>An efficient multimodal face recognition method robust to pose variation</strong><br>
+                            A Cheraghian, K Faez, H Dastmalchi, FB Oskuie<br>
+                            ISCI 2011
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </main>
+
+    <script>
+        const ctx = document.getElementById('citationChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'Citations',
+                    data: [35, 82, 64, 31, 20, 82, 36, 59],
+                    borderColor: '#002b5e',
+                    backgroundColor: 'rgba(0, 43, 94, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
