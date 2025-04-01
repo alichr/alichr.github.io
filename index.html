@@ -346,11 +346,25 @@
             color: var(--primary-color);
             font-weight: 600;
         }
+
+        /* Add this new CSS rule after existing styles */
+        .visit-counter {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            font-size: 0.8rem;
+            color: rgba(0, 0, 0, 0.5);
+            font-family: 'Montserrat', sans-serif;
+            z-index: 1000;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="visit-counter">
+        Visits: <span id="visitCount">0</span>
+    </div>
     <header>
         <div class="header-content">
             <img src="./images/profile.webp" alt="Ali Cheraghian" class="profile-photo" loading="lazy">
@@ -701,6 +715,12 @@
         // Update data periodically
         setInterval(updateCitationData, 3600000); // Update every hour
         updateCitationData(); // Initial update
+
+        // Get visit count from localStorage or initialize to 0
+        let visits = localStorage.getItem('pageVisits') || 0;
+        visits = parseInt(visits) + 1;
+        localStorage.setItem('pageVisits', visits);
+        document.getElementById('visitCount').textContent = visits;
     </script>
 </body>
 
