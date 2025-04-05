@@ -357,56 +357,17 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 12px 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             font-family: 'Montserrat', sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s ease;
             z-index: 1000;
+            width: 200px;
         }
 
-        .visit-counter:hover {
-            transform: translateY(-5px);
-        }
-
-        .visit-counter::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: #4CAF50;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .visit-counter span {
-            font-weight: 600;
-            color: var(--primary-color);
-            font-size: 1rem;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.5);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .visit-counter .label {
-            color: #666;
-            font-size: 0.9rem;
+        .visit-counter .graph-container {
+            height: 100px;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -414,8 +375,9 @@
 
 <body>
     <div class="visit-counter">
-        <span class="label">Visitors:</span>
-        <span id="visitCount">0</span>
+        <div class="graph-container">
+            <canvas id="visitorChart"></canvas>
+        </div>
     </div>
     <header>
         <div class="header-content">
@@ -768,11 +730,87 @@
         setInterval(updateCitationData, 3600000); // Update every hour
         updateCitationData(); // Initial update
 
-        // Get visit count from localStorage or initialize to 0
-        let visits = localStorage.getItem('pageVisits') || 0;
-        visits = parseInt(visits) + 1;
-        localStorage.setItem('pageVisits', visits);
-        document.getElementById('visitCount').textContent = visits;
+        // Function to get the last 7 days
+        function getLast7Days() {
+            const days = [];
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                days.push(date.toLocaleDateString('en-US', { weekday: 'short' }));
+            }
+            return days;
+        }
+
+        // Initialize visitor chart
+        const visitorCtx = document.getElementById('visitorChart').getContext('2d');
+        const visitorChart = new Chart(visitorCtx, {
+            type: 'line',
+            data: {
+                labels: getLast7Days(),
+                datasets: [{
+                    data: [0, 0, 0, 0, 0, 0, 0],
+                    borderColor: 'rgba(0, 43, 94, 0.8)',
+                    backgroundColor: 'rgba(0, 43, 94, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 0,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: false
+                    }
+                },
+                scales: {
+                    y: {
+                        display: false,
+                        beginAtZero: true
+                    },
+                    x: {
+                        display: false
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                }
+            }
+        });
+
+        // Function to update visitor data
+        function updateVisitorData() {
+            const today = new Date().toLocaleDateString();
+            let visitorData = JSON.parse(localStorage.getItem('visitorData') || '{}');
+            
+            if (!visitorData[today]) {
+                visitorData[today] = 0;
+            }
+            visitorData[today]++;
+            
+            localStorage.setItem('visitorData', JSON.stringify(visitorData));
+            
+            // Update chart data
+            const last7Days = [];
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toLocaleDateString();
+                last7Days.push(visitorData[dateStr] || 0);
+            }
+            
+            visitorChart.data.datasets[0].data = last7Days;
+            visitorChart.update();
+        }
+
+        // Update visitor data on page load
+        updateVisitorData();
     </script>
 </body>
 
