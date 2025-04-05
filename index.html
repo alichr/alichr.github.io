@@ -358,25 +358,128 @@
             bottom: 20px;
             right: 20px;
             background: rgba(255, 255, 255, 0.95);
-            padding: 12px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             font-family: 'Montserrat', sans-serif;
             z-index: 1000;
-            width: 200px;
+            width: 280px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .visit-counter:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .visit-counter .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .visit-counter .title {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .visit-counter .total-count {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            background: rgba(0, 43, 94, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            animation: pulse 2s infinite;
         }
 
         .visit-counter .graph-container {
-            height: 100px;
+            height: 120px;
+            position: relative;
         }
+
+        .visit-counter .daily-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .visit-counter .day-stat {
+            text-align: center;
+        }
+
+        .visit-counter .day-label {
+            font-size: 0.7rem;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .visit-counter .day-count {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .visit-counter .day-stat {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .visit-counter .day-stat:nth-child(1) { animation-delay: 0.1s; }
+        .visit-counter .day-stat:nth-child(2) { animation-delay: 0.2s; }
+        .visit-counter .day-stat:nth-child(3) { animation-delay: 0.3s; }
+        .visit-counter .day-stat:nth-child(4) { animation-delay: 0.4s; }
+        .visit-counter .day-stat:nth-child(5) { animation-delay: 0.5s; }
+        .visit-counter .day-stat:nth-child(6) { animation-delay: 0.6s; }
+        .visit-counter .day-stat:nth-child(7) { animation-delay: 0.7s; }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="visit-counter">
+        <div class="header">
+            <span class="title">Daily Visitors</span>
+            <span class="total-count" id="totalCount">0</span>
+        </div>
         <div class="graph-container">
             <canvas id="visitorChart"></canvas>
+        </div>
+        <div class="daily-stats" id="dailyStats">
+            <!-- Daily stats will be populated by JavaScript -->
         </div>
     </div>
     <header>
@@ -741,7 +844,7 @@
             return days;
         }
 
-        // Initialize visitor chart
+        // Initialize visitor chart with enhanced styling
         const visitorCtx = document.getElementById('visitorChart').getContext('2d');
         const visitorChart = new Chart(visitorCtx, {
             type: 'line',
@@ -753,7 +856,10 @@
                     backgroundColor: 'rgba(0, 43, 94, 0.1)',
                     tension: 0.4,
                     fill: true,
-                    pointRadius: 0,
+                    pointRadius: 4,
+                    pointBackgroundColor: 'rgba(0, 43, 94, 1)',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
                     borderWidth: 2
                 }]
             },
@@ -765,7 +871,17 @@
                         display: false
                     },
                     tooltip: {
-                        enabled: false
+                        enabled: true,
+                        backgroundColor: 'rgba(0, 43, 94, 0.9)',
+                        padding: 10,
+                        titleFont: {
+                            family: 'Montserrat',
+                            size: 12
+                        },
+                        bodyFont: {
+                            family: 'Montserrat',
+                            size: 12
+                        }
                     }
                 },
                 scales: {
@@ -784,7 +900,7 @@
             }
         });
 
-        // Function to update visitor data
+        // Function to update visitor data with enhanced features
         function updateVisitorData() {
             const today = new Date().toLocaleDateString();
             let visitorData = JSON.parse(localStorage.getItem('visitorData') || '{}');
@@ -796,13 +912,32 @@
             
             localStorage.setItem('visitorData', JSON.stringify(visitorData));
             
+            // Update total count
+            const totalVisitors = Object.values(visitorData).reduce((a, b) => a + b, 0);
+            document.getElementById('totalCount').textContent = totalVisitors;
+            
             // Update chart data
             const last7Days = [];
+            const dailyStatsContainer = document.getElementById('dailyStats');
+            dailyStatsContainer.innerHTML = '';
+            
             for (let i = 6; i >= 0; i--) {
                 const date = new Date();
                 date.setDate(date.getDate() - i);
                 const dateStr = date.toLocaleDateString();
-                last7Days.push(visitorData[dateStr] || 0);
+                const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+                const visitors = visitorData[dateStr] || 0;
+                
+                last7Days.push(visitors);
+                
+                // Create daily stat element
+                const dayStat = document.createElement('div');
+                dayStat.className = 'day-stat';
+                dayStat.innerHTML = `
+                    <div class="day-label">${dayName}</div>
+                    <div class="day-count">${visitors}</div>
+                `;
+                dailyStatsContainer.appendChild(dayStat);
             }
             
             visitorChart.data.datasets[0].data = last7Days;
