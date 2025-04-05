@@ -368,6 +368,11 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             transform: translateY(0);
             transition: all 0.3s ease;
+            display: none;
+        }
+
+        .visit-counter.visible {
+            display: block;
         }
 
         .visit-counter:hover {
@@ -886,6 +891,26 @@
 
         // Update visitor data on page load
         updateVisitorData();
+
+        // Function to check if user has scrolled to bottom
+        function checkScroll() {
+            const counter = document.querySelector('.visit-counter');
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const bottomThreshold = 50; // Show counter when 50px from bottom
+
+            if (documentHeight - (scrollPosition + windowHeight) <= bottomThreshold) {
+                counter.classList.add('visible');
+            } else {
+                counter.classList.remove('visible');
+            }
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', checkScroll);
+        // Check initial state
+        checkScroll();
     </script>
 </body>
 
