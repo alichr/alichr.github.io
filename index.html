@@ -439,6 +439,88 @@
             color: var(--primary-color);
             font-weight: 600;
         }
+
+        .chatbot-section {
+            max-width: 800px;
+            margin: 3rem auto;
+            text-align: left;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            animation: fadeInUp var(--animation-duration) var(--animation-timing) 0.8s;
+        }
+
+        .chatbot-section h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .chatbot-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .chatbot-description {
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .chatbot-iframe-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .chatbot-iframe-container:hover {
+            transform: translateY(-2px);
+        }
+
+        .chatbot-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .chatbot-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .chatbot-link:hover {
+            background: var(--hover-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .chatbot-iframe-container {
+                height: 500px;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -480,6 +562,22 @@
                 <li>Our paper "3D scene generation for zero-shot learning using ChatGPT guided language prompts" has been accepted to <span class="venue">CVIU'24</span></li>
                 <li>Our papers "Efficient Atmospheric Correction" and "Enhancing Glaucoma Diagnosis" have been accepted to <span class="venue">DICTA'24</span></li>
             </ul>
+        </div>
+
+        <div class="chatbot-section">
+            <h2>Ask Me Anything</h2>
+            <div class="chatbot-description">
+                <p>Have questions about my research, career, or want to know more about my work? Chat with my AI assistant that knows about my background, publications, and expertise. Feel free to ask about my research areas, publications, or any other questions you might have!</p>
+            </div>
+            <div class="chatbot-iframe-container">
+                <iframe 
+                    src="https://huggingface.co/spaces/alichr/career_conversation" 
+                    class="chatbot-iframe"
+                    title="Ali Cheraghian Career Chatbot"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
         </div>
 
         <div class="publications-section">
