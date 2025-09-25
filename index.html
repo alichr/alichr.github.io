@@ -476,49 +476,103 @@
             line-height: 1.6;
         }
 
-        .chatbot-iframe-container {
+        .chatbot-container {
             position: relative;
             width: 100%;
-            height: 600px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            min-height: 400px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 43, 94, 0.15);
             transition: transform 0.3s ease;
         }
 
-        .chatbot-iframe-container:hover {
-            transform: translateY(-2px);
+        .chatbot-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 43, 94, 0.2);
         }
 
-        .chatbot-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 8px;
-        }
-
-        .chatbot-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 1.5rem;
-            background: var(--primary-color);
+        .chatbot-placeholder {
+            text-align: center;
             color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 3rem 2rem;
+            max-width: 500px;
         }
 
-        .chatbot-link:hover {
-            background: var(--hover-color);
+        .chatbot-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .chatbot-placeholder h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .chatbot-placeholder p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .chatbot-launch-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 2px solid transparent;
+        }
+
+        .chatbot-launch-button:hover {
+            background: var(--secondary-color);
+            color: white;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            border-color: white;
         }
 
         @media (max-width: 768px) {
-            .chatbot-iframe-container {
-                height: 500px;
+            .chatbot-container {
+                min-height: 350px;
+            }
+            
+            .chatbot-placeholder {
+                padding: 2rem 1.5rem;
+            }
+            
+            .chatbot-icon {
+                font-size: 3rem;
+            }
+            
+            .chatbot-placeholder h3 {
+                font-size: 1.5rem;
+            }
+            
+            .chatbot-placeholder p {
+                font-size: 1rem;
             }
         }
     </style>
@@ -569,14 +623,15 @@
             <div class="chatbot-description">
                 <p>Have questions about my research, career, or want to know more about my work? Chat with my AI assistant that knows about my background, publications, and expertise. Feel free to ask about my research areas, publications, or any other questions you might have!</p>
             </div>
-            <div class="chatbot-iframe-container">
-                <iframe 
-                    src="https://huggingface.co/spaces/alichr/career_conversation" 
-                    class="chatbot-iframe"
-                    title="Ali Cheraghian Career Chatbot"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+            <div class="chatbot-container">
+                <div class="chatbot-placeholder">
+                    <div class="chatbot-icon">🤖</div>
+                    <h3>Chat with Ali's AI Assistant</h3>
+                    <p>Click below to start a conversation with my personal AI assistant that knows about my research, publications, and career.</p>
+                    <a href="https://huggingface.co/spaces/alichr/career_conversation" target="_blank" class="chatbot-launch-button">
+                        Start Conversation
+                    </a>
+                </div>
             </div>
         </div>
 
