@@ -441,14 +441,33 @@
         }
 
         .chatbot-section {
-            max-width: 800px;
+            max-width: 900px;
             margin: 3rem auto;
             text-align: left;
             background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 43, 94, 0.1);
             animation: fadeInUp var(--animation-duration) var(--animation-timing) 0.8s;
+            border: 1px solid rgba(167, 197, 237, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chatbot-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), #00d4ff);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
         }
 
         .chatbot-section h2 {
@@ -479,100 +498,241 @@
         .chatbot-container {
             position: relative;
             width: 100%;
-            min-height: 400px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 450px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, #00d4ff 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 24px rgba(0, 43, 94, 0.15);
-            transition: transform 0.3s ease;
+            box-shadow: 0 12px 40px rgba(0, 43, 94, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .chatbot-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .chatbot-container:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0, 43, 94, 0.2);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 43, 94, 0.3);
         }
 
         .chatbot-placeholder {
             text-align: center;
             color: white;
             padding: 3rem 2rem;
-            max-width: 500px;
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
         }
 
         .chatbot-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            animation: bounce 2s infinite;
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
             }
-            40% {
-                transform: translateY(-10px);
+            33% {
+                transform: translateY(-10px) rotate(2deg);
             }
-            60% {
-                transform: translateY(-5px);
+            66% {
+                transform: translateY(5px) rotate(-1deg);
             }
         }
 
         .chatbot-placeholder h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out 0.3s both;
         }
 
         .chatbot-placeholder p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            line-height: 1.6;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.7;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .sample-questions {
+            margin: 2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.9s both;
+        }
+
+        .sample-question {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .sample-question:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .chatbot-launch-button {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            background: white;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(45deg, #ffffff, #f8f9ff);
             color: var(--primary-color);
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            border: 2px solid transparent;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out 1.2s both;
+        }
+
+        .chatbot-launch-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .chatbot-launch-button:hover::before {
+            left: 100%;
         }
 
         .chatbot-launch-button:hover {
-            background: var(--secondary-color);
+            background: linear-gradient(45deg, var(--secondary-color), #00d4ff);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-            border-color: white;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 43, 94, 0.4);
+            border-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .ai-features {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease-out 1.5s both;
+        }
+
+        .ai-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .ai-feature:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .ai-feature-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .ai-feature-text {
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
         @media (max-width: 768px) {
+            .chatbot-section {
+                padding: 2rem;
+                margin: 2rem auto;
+            }
+            
             .chatbot-container {
-                min-height: 350px;
+                min-height: 400px;
+                border-radius: 16px;
             }
             
             .chatbot-placeholder {
-                padding: 2rem 1.5rem;
+                padding: 2.5rem 1.5rem;
             }
             
             .chatbot-icon {
-                font-size: 3rem;
+                font-size: 4rem;
             }
             
             .chatbot-placeholder h3 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
             
             .chatbot-placeholder p {
-                font-size: 1rem;
+                font-size: 1.1rem;
+            }
+
+            .sample-questions {
+                gap: 0.6rem;
+            }
+
+            .sample-question {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .chatbot-launch-button {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            .ai-features {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 0.8rem;
+            }
+
+            .ai-feature {
+                padding: 0.8rem;
+            }
+
+            .ai-feature-icon {
+                font-size: 1.5rem;
+            }
+
+            .ai-feature-text {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -619,7 +779,7 @@
         </div>
 
         <div class="chatbot-section">
-            <h2>Ask Me Anything</h2>
+            <h2>🤖 Ask Me Anything</h2>
             <div class="chatbot-description">
                 <p>Have questions about my research, career, or want to know more about my work? Chat with my AI assistant that knows about my background, publications, and expertise. Feel free to ask about my research areas, publications, or any other questions you might have!</p>
             </div>
@@ -627,10 +787,33 @@
                 <div class="chatbot-placeholder">
                     <div class="chatbot-icon">🤖</div>
                     <h3>Chat with Ali's AI Assistant</h3>
-                    <p>Click below to start a conversation with my personal AI assistant that knows about my research, publications, and career.</p>
+                    <p>Engage with my intelligent AI assistant that has comprehensive knowledge about my research journey, publications, and expertise in AI/ML, computer vision, and generative technologies.</p>
+                    
+                    <div class="sample-questions">
+                        <div class="sample-question">What are your main research areas?</div>
+                        <div class="sample-question">Tell me about your publications</div>
+                        <div class="sample-question">What's your career journey?</div>
+                        <div class="sample-question">How can I collaborate?</div>
+                    </div>
+                    
                     <a href="https://huggingface.co/spaces/alichr/career_conversation" target="_blank" class="chatbot-launch-button">
-                        Start Conversation
+                        🚀 Start Conversation
                     </a>
+                    
+                    <div class="ai-features">
+                        <div class="ai-feature">
+                            <span class="ai-feature-icon">🧠</span>
+                            <div class="ai-feature-text">Research Expert</div>
+                        </div>
+                        <div class="ai-feature">
+                            <span class="ai-feature-icon">📚</span>
+                            <div class="ai-feature-text">Publication Knowledge</div>
+                        </div>
+                        <div class="ai-feature">
+                            <span class="ai-feature-icon">🎯</span>
+                            <div class="ai-feature-text">Collaboration Ready</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -972,6 +1155,41 @@
                 console.error('Error fetching citation data:', error);
             }
         }
+
+        // Interactive sample questions for chatbot
+        document.addEventListener('DOMContentLoaded', function() {
+            const sampleQuestions = document.querySelectorAll('.sample-question');
+            const chatbotButton = document.querySelector('.chatbot-launch-button');
+            
+            sampleQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    // Add a subtle animation when clicked
+                    this.style.transform = 'scale(0.95)';
+                    this.style.background = 'rgba(255, 255, 255, 0.4)';
+                    
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.background = '';
+                    }, 150);
+                    
+                    // Open the chatbot with the question (you could enhance this further)
+                    setTimeout(() => {
+                        window.open(chatbotButton.href, '_blank');
+                    }, 200);
+                });
+            });
+
+            // Add typing animation effect to the chatbot icon
+            const chatbotIcon = document.querySelector('.chatbot-icon');
+            if (chatbotIcon) {
+                setInterval(() => {
+                    chatbotIcon.style.filter = 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) brightness(1.1)';
+                    setTimeout(() => {
+                        chatbotIcon.style.filter = 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))';
+                    }, 500);
+                }, 3000);
+            }
+        });
     </script>
     
     <!-- Simple and reliable visitor counter using FlagCounter -->
