@@ -1,0 +1,43 @@
+name: Update Citation Data
+
+on:
+  schedule:
+    # Run every Sunday at 2 AM UTC
+    - cron: '0 2 * * 0'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-citations:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Update citation data
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+        run: python scripts/update_citations.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'Citation Bot'
+          git config --global user.email 'actions@github.com'
+          git add index.html
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update citation statistics [automated]
+
+            Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
+            git push
+          fi
