@@ -575,17 +575,50 @@ html.dark-mode .contact-links a:hover {
    Component - Bio/About Section
    ========================================================================== */
 .bio-text {
-    max-width: 800px;
+    max-width: 850px;
     margin: 2rem auto;
     line-height: 1.8;
-    text-align: justify;
-    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.95);
     opacity: 0;
     animation: fadeInUp var(--animation-duration) var(--animation-timing) 0.5s forwards;
 }
 
+.bio-text p {
+    margin: 0 0 1rem 0;
+}
+
+.bio-text p:last-child {
+    margin-bottom: 0;
+}
+
+.bio-text strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.bio-text .research-interests {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin: 1.25rem 0;
+    font-size: 0.95rem;
+}
+
 html.dark-mode .bio-text {
     color: var(--text-color);
+}
+
+html.dark-mode .bio-text strong {
+    color: var(--primary-color);
+}
+
+html.dark-mode .bio-text .research-interests {
+    background: rgba(88, 166, 255, 0.1);
+    border-color: rgba(88, 166, 255, 0.2);
 }
 
 /* ==========================================================================
