@@ -101,9 +101,9 @@ def update_html_file(file_path, citation_data):
                 content
             )
 
-            # Update data array in the chart
+            # Update data array in the chart (matches the line with citation marker comment)
             content = re.sub(
-                r"(data: \[)[^\]]*(\],\s*//[^\n]*)",
+                r"(data: \[)[^\]]*(], // citation data per year)",
                 f"\\g<1>{data_str}\\g<2>",
                 content
             )
