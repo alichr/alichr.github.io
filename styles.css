@@ -579,8 +579,10 @@ html.dark-mode .contact-links a:hover {
 }
 
 .social-icon {
-    width: 1.1em;
-    height: 1.1em;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    min-height: 18px;
     flex-shrink: 0;
     transition: transform 0.3s ease;
 }
