@@ -642,66 +642,6 @@ html.dark-mode .bio-text .research-interests {
 }
 
 /* ==========================================================================
-   Component - Section Navigation (Sticky)
-   ========================================================================== */
-.section-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-    transition: background-color 0.4s ease, box-shadow 0.3s ease;
-}
-
-.section-nav-content {
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    gap: 0.25rem;
-    padding: 0.5rem 1rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-}
-
-.section-nav-content::-webkit-scrollbar {
-    display: none;
-}
-
-.nav-link {
-    color: var(--text-color);
-    text-decoration: none;
-    padding: 0.5rem 1.25rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: all 0.3s var(--animation-timing);
-}
-
-.nav-link:hover {
-    color: var(--primary-color);
-    background: var(--border-color);
-}
-
-@media (max-width: 480px) {
-    .section-nav-content {
-        justify-content: flex-start;
-        gap: 0.15rem;
-        padding: 0.4rem 0.75rem;
-    }
-
-    .nav-link {
-        padding: 0.4rem 0.9rem;
-        font-size: 0.82rem;
-    }
-}
-
-/* ==========================================================================
    Layout - Main Content
    ========================================================================== */
 main {
