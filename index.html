@@ -782,11 +782,15 @@
                             observer.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.1 });
+                }, { threshold: 0, rootMargin: '0px 0px 100px 0px' });
                 reveals.forEach(function(el) { observer.observe(el); });
             } else {
                 reveals.forEach(function(el) { el.classList.add('visible'); });
             }
+            // Safety fallback: ensure all sections are visible after 3s
+            setTimeout(function() {
+                reveals.forEach(function(el) { el.classList.add('visible'); });
+            }, 3000);
         })();
 
         // Interactive sample questions for chatbot
