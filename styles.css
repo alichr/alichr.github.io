@@ -1868,6 +1868,16 @@ html.dark-mode .visitor-counter {
     transform: translateY(0);
 }
 
+/* Publications section: fade only, skip transform (too large for smooth translateY) */
+.publications-section.reveal {
+    transform: none;
+    transition: opacity 0.5s ease;
+}
+
+.publications-section.reveal.visible {
+    transform: none;
+}
+
 .mt-1 { margin-top: 0.5rem; }
 .mt-2 { margin-top: 1rem; }
 .mt-3 { margin-top: 1.5rem; }
@@ -2034,6 +2044,28 @@ html.dark-mode .visitor-counter {
     /* Footer responsive */
     .footer-content {
         padding: 0 1rem;
+    }
+
+    /* Reduce backdrop-filter on mobile for performance */
+    .publications-section,
+    .news-section,
+    .cv-section,
+    .chatbot-section {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    /* Disable hover transforms on mobile (no hover on touch) */
+    .publications-section:hover,
+    .news-section:hover,
+    .cv-section:hover,
+    .chatbot-section:hover {
+        transform: none;
+    }
+
+    .publications-list li:hover,
+    .publication-item:hover {
+        transform: none;
     }
 
     /* Research cards - reduce left padding for icons */
