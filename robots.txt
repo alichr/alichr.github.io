@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alichr.github.io/sitemap.xml
