@@ -2046,25 +2046,62 @@ html.dark-mode .visitor-counter {
         padding: 0 1rem;
     }
 
-    /* Reduce backdrop-filter on mobile for performance */
+    /* Remove backdrop-filter on mobile for performance */
     .publications-section,
     .news-section,
     .cv-section,
-    .chatbot-section {
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
+    .chatbot-section,
+    .section-nav {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: var(--card-bg);
     }
 
-    /* Disable hover transforms on mobile (no hover on touch) */
+    /* Publications section: always visible, no animation */
+    .publications-section.reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    /* Simplify publication cards on mobile */
+    .publications-list li,
+    .publication-item {
+        transition: none;
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+    }
+
+    .publication-thumbnail {
+        transition: none;
+    }
+
+    .publication-content strong {
+        transition: none;
+    }
+
+    /* Disable all hover transforms on mobile */
     .publications-section:hover,
     .news-section:hover,
     .cv-section:hover,
     .chatbot-section:hover {
         transform: none;
+        box-shadow: var(--shadow-lg);
     }
 
     .publications-list li:hover,
     .publication-item:hover {
+        transform: none;
+    }
+
+    .publications-list li:hover .publication-thumbnail,
+    .publication-item:hover .publication-thumbnail {
+        transform: none;
+    }
+
+    .citation-graph:hover,
+    .citation-stats:hover,
+    .stat-item:hover {
         transform: none;
     }
 
