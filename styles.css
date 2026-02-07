@@ -642,6 +642,46 @@ html.dark-mode .bio-text .research-interests {
 }
 
 /* ==========================================================================
+   Section Navigation (Sticky)
+   ========================================================================== */
+.section-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--border-color);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.section-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.section-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.section-nav a:hover {
+    color: var(--primary-color);
+    background: var(--border-color);
+}
+
+/* ==========================================================================
    Layout - Main Content
    ========================================================================== */
 main {
