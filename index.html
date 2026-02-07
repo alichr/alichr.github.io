@@ -110,7 +110,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script>
         // Prevent flash of wrong theme
@@ -142,7 +142,8 @@
                 <div class="hero-text">
                     <h1>Ali Cheraghian</h1>
                     <p class="title">Senior AI/ML Scientist | Macquarie University</p>
-                    <p class="hero-tagline">My research focuses on enabling AI models to generalize from limited supervision &mdash; spanning vision-language understanding, knowledge distillation, 3D point cloud analysis, and test-time adaptation, with publications at CVPR, ICCV, ECCV, ICLR, IJCV, TMLR, and Pattern Recognition.</p>
+                    <p class="hero-tagline">Enabling AI models to generalize from limited supervision &mdash; spanning vision-language understanding, knowledge distillation, 3D point cloud analysis, and test-time adaptation.<br>
+                    <span class="hero-venues">Published at <span class="hero-venue-tag">CVPR</span> <span class="hero-venue-tag">ICCV</span> <span class="hero-venue-tag">ECCV</span> <span class="hero-venue-tag">ICLR</span> <span class="hero-venue-tag">IJCV</span> <span class="hero-venue-tag">TMLR</span></span></p>
 
                     <div class="hero-metrics" aria-label="Citation metrics">
                         <a href="https://scholar.google.com/citations?user=QT0EXIkAAAAJ" target="_blank" rel="noopener noreferrer" class="metric-badge">
@@ -196,18 +197,21 @@
             <div class="cv-grid">
                 <div class="cv-col">
                     <h2 id="research-heading">Research Areas</h2>
-                    <div class="cv-list">
-                        <div class="cv-item">
+                    <div class="cv-list research-list">
+                        <div class="cv-item research-card research-card--vlm">
+                            <span class="research-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/><path d="M8 12a4 4 0 0 1 8 0"/></svg></span>
                             <span class="cv-title">Vision-Language Models</span>
                             <div class="cv-sub">CLIP adaptation, prompt-guided generation, VLM test-time adaptation</div>
                             <div class="research-venues">5 papers &middot; AAAI, BMVC, CVIU, DICTA</div>
                         </div>
-                        <div class="cv-item">
+                        <div class="cv-item research-card research-card--distill">
+                            <span class="research-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M9 3v12l-3 3h12l-3-3V3"/><path d="M9 3h6"/><path d="M7 18h10"/></svg></span>
                             <span class="cv-title">Knowledge Distillation</span>
                             <div class="cv-sub">Dynamic trade-off optimization, logit calibration, subspace methods</div>
                             <div class="research-venues">4 papers &middot; ICLR, WACV, TMLR, DICTA</div>
                         </div>
-                        <div class="cv-item">
+                        <div class="cv-item research-card research-card--3d">
+                            <span class="research-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
                             <span class="cv-title">3D Point Clouds</span>
                             <div class="cv-sub">Zero-shot recognition, capsule networks, pruning, classification</div>
                             <div class="research-venues">10 papers &middot; IJCV, ECCV, WACV, BMVC, MVA</div>
@@ -216,18 +220,21 @@
                 </div>
                 <div class="cv-col">
                     <h2 class="research-col-heading">&nbsp;</h2>
-                    <div class="cv-list">
-                        <div class="cv-item">
+                    <div class="cv-list research-list">
+                        <div class="cv-item research-card research-card--fewshot">
+                            <span class="research-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
                             <span class="cv-title">Few-Shot &amp; Incremental Learning</span>
                             <div class="cv-sub">Semantic-aware distillation, synthesized features, 3D class-incremental</div>
                             <div class="research-venues">6 papers &middot; CVPR, ICCV, ECCV, ACCV</div>
                         </div>
-                        <div class="cv-item">
+                        <div class="cv-item research-card research-card--tta">
+                            <span class="research-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></span>
                             <span class="cv-title">Test-Time Adaptation</span>
                             <div class="cv-sub">Continual domain adaptation, backprop-free methods, denoising diffusion</div>
                             <div class="research-venues">5 papers &middot; CVPR, AAAI, WACV, BMVC</div>
                         </div>
-                        <div class="cv-item">
+                        <div class="cv-item research-card research-card--applied">
+                            <span class="research-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
                             <span class="cv-title">Applied AI</span>
                             <div class="cv-sub">Satellite atmospheric correction, glaucoma diagnosis, IC design</div>
                             <div class="research-venues">3 papers &middot; US Patent, DICTA</div>
@@ -236,6 +243,8 @@
                 </div>
             </div>
         </section>
+
+        <div class="section-separator" aria-hidden="true"><span class="section-separator-dot"></span></div>
 
         <section class="news-section reveal" aria-labelledby="news-heading">
             <h2 id="news-heading">News</h2>
@@ -263,6 +272,8 @@
             <button class="news-toggle" id="news-toggle" type="button" aria-expanded="false" aria-controls="news-older">Show older news</button>
         </section>
 
+        <div class="section-separator" aria-hidden="true"><span class="section-separator-dot"></span></div>
+
         <section class="cv-section reveal" aria-labelledby="education-heading">
             <div class="cv-grid">
                 <div class="cv-col">
@@ -288,15 +299,15 @@
                 <div class="cv-col">
                     <h2 id="experience-heading">Experience</h2>
                     <div class="cv-list">
-                        <div class="cv-item">
+                        <div class="cv-item cv-item--current">
                             <span class="cv-year">2025 — Present</span>
                             <span class="cv-title">Senior AI/ML Scientist</span>, Macquarie University
                         </div>
-                        <div class="cv-item">
+                        <div class="cv-item cv-item--current">
                             <span class="cv-year">2024 — Present</span>
                             <span class="cv-title">Adjunct Lecturer</span>, Australian National University (ANU)
                         </div>
-                        <div class="cv-item">
+                        <div class="cv-item cv-item--current">
                             <span class="cv-year">2024 — Present</span>
                             <span class="cv-title">Adjunct Senior ML Scientist</span>, University of Technology Sydney (UTS)
                         </div>
@@ -308,6 +319,8 @@
                 </div>
             </div>
         </section>
+
+        <div class="section-separator" aria-hidden="true"><span class="section-separator-dot"></span></div>
 
         <section class="publications-section reveal" aria-labelledby="publications-heading">
             <h2 id="publications-heading">Publications</h2>
@@ -586,6 +599,8 @@
                 </ul>
             </div>
         </section>
+
+        <div class="section-separator" aria-hidden="true"><span class="section-separator-dot"></span></div>
 
         <section class="chatbot-section reveal" aria-labelledby="chatbot-heading">
             <h2 id="chatbot-heading">Ask Me Anything</h2>
