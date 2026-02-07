@@ -1474,6 +1474,11 @@ html.dark-mode .publication-thumbnail {
     color: #fff;
 }
 
+.venue-badge.tier-2 {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: #fff;
+}
+
 /* ==========================================================================
    Component - Publication Filters
    ========================================================================== */
