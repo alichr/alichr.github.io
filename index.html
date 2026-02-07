@@ -468,41 +468,17 @@
 
         <section class="chatbot-section reveal" aria-labelledby="chatbot-heading">
             <h2 id="chatbot-heading">Ask Me Anything</h2>
-            <div class="chatbot-description">
-                <p>Have questions about my research, career, or want to know more about my work? Chat with my AI assistant that knows about my background, publications, and expertise. Feel free to ask about my research areas, publications, or any other questions you might have!</p>
-            </div>
-            <div class="chatbot-container">
-                <div class="chatbot-placeholder">
-                    <div class="chatbot-icon" aria-hidden="true">&#129302;</div>
-                    <h3>Chat with Ali's AI Assistant</h3>
-                    <p>Engage with my intelligent AI assistant that has comprehensive knowledge about my research journey, publications, and expertise in AI/ML, computer vision, and generative technologies.</p>
-
-                    <div class="sample-questions" role="list" aria-label="Sample questions you can ask">
-                        <span class="sample-question" role="listitem" tabindex="0">What are your main research areas?</span>
-                        <span class="sample-question" role="listitem" tabindex="0">Tell me about your publications</span>
-                        <span class="sample-question" role="listitem" tabindex="0">What's your career journey?</span>
-                        <span class="sample-question" role="listitem" tabindex="0">How can I collaborate?</span>
-                    </div>
-
-                    <a href="https://huggingface.co/spaces/alichr/career_conversation" target="_blank" rel="noopener noreferrer" class="chatbot-launch-button" aria-label="Start conversation with AI assistant (opens in new tab)">
-                        &#128640; Start Conversation
-                    </a>
-
-                    <div class="ai-features" role="list" aria-label="AI assistant features">
-                        <div class="ai-feature" role="listitem">
-                            <span class="ai-feature-icon" aria-hidden="true">&#129504;</span>
-                            <div class="ai-feature-text">Research Expert</div>
-                        </div>
-                        <div class="ai-feature" role="listitem">
-                            <span class="ai-feature-icon" aria-hidden="true">&#128218;</span>
-                            <div class="ai-feature-text">Publication Knowledge</div>
-                        </div>
-                        <div class="ai-feature" role="listitem">
-                            <span class="ai-feature-icon" aria-hidden="true">&#127919;</span>
-                            <div class="ai-feature-text">Collaboration Ready</div>
-                        </div>
-                    </div>
+            <p class="chatbot-intro">Have questions about my research or publications? Chat with my AI assistant.</p>
+            <div class="chatbot-actions">
+                <div class="sample-questions" role="list" aria-label="Sample questions you can ask">
+                    <span class="sample-question" role="listitem" tabindex="0">Research areas</span>
+                    <span class="sample-question" role="listitem" tabindex="0">Publications</span>
+                    <span class="sample-question" role="listitem" tabindex="0">Career journey</span>
+                    <span class="sample-question" role="listitem" tabindex="0">Collaborate</span>
                 </div>
+                <a href="https://huggingface.co/spaces/alichr/career_conversation" target="_blank" rel="noopener noreferrer" class="chatbot-launch-button" aria-label="Start conversation with AI assistant (opens in new tab)">
+                    Start Conversation &rarr;
+                </a>
             </div>
         </section>
     </main>
@@ -707,16 +683,6 @@
                 });
             });
 
-            // Chatbot icon animation
-            const chatbotIcon = document.querySelector('.chatbot-icon');
-            if (chatbotIcon) {
-                setInterval(() => {
-                    chatbotIcon.style.filter = 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) brightness(1.1)';
-                    setTimeout(() => {
-                        chatbotIcon.style.filter = 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))';
-                    }, 500);
-                }, 3000);
-            }
         });
     </script>
 </body>
