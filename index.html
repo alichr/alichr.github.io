@@ -125,7 +125,7 @@
     </header>
 
     <main id="main-content" role="main">
-        <section class="news-section" aria-labelledby="news-heading">
+        <section class="news-section reveal" aria-labelledby="news-heading">
             <h2 id="news-heading">News</h2>
             <ul>
                 <li>Our US patent "Atmospheric Correction" (US App. 19/266,579) has been published — <span class="venue">US Patent 2026</span></li>
@@ -151,7 +151,7 @@
             <button class="news-toggle" id="news-toggle" type="button" aria-expanded="false" aria-controls="news-older">Show older news</button>
         </section>
 
-        <section class="cv-section" aria-labelledby="education-heading">
+        <section class="cv-section reveal" aria-labelledby="education-heading">
             <div class="cv-grid">
                 <div class="cv-col">
                     <h2 id="education-heading">Education</h2>
@@ -197,7 +197,7 @@
             </div>
         </section>
 
-        <section class="publications-section" aria-labelledby="publications-heading">
+        <section class="publications-section reveal" aria-labelledby="publications-heading">
             <h2 id="publications-heading">Publications</h2>
             <div class="stats-container">
                 <div class="citation-graph" aria-label="Citations over time chart">
@@ -466,7 +466,7 @@
             </div>
         </section>
 
-        <section class="chatbot-section" aria-labelledby="chatbot-heading">
+        <section class="chatbot-section reveal" aria-labelledby="chatbot-heading">
             <h2 id="chatbot-heading">Ask Me Anything</h2>
             <div class="chatbot-description">
                 <p>Have questions about my research, career, or want to know more about my work? Chat with my AI assistant that knows about my background, publications, and expertise. Feel free to ask about my research areas, publications, or any other questions you might have!</p>
@@ -572,6 +572,21 @@
             const ctx = document.getElementById('citationChart').getContext('2d');
             const isDark = document.documentElement.classList.contains('dark-mode');
 
+            // Generate gradient blue colors for bars (lighter to darker)
+            var barCount = 10;
+            var bgColors = [];
+            var borderColors = [];
+            var hoverColors = [];
+            for (var i = 0; i < barCount; i++) {
+                var t = i / (barCount - 1);
+                var r = Math.round(180 - t * 150);
+                var g = Math.round(210 - t * 80);
+                var b = Math.round(255 - t * 30);
+                bgColors.push('rgba(' + r + ',' + g + ',' + b + ',0.7)');
+                borderColors.push('rgba(' + r + ',' + g + ',' + b + ',1)');
+                hoverColors.push('rgba(' + r + ',' + g + ',' + b + ',0.9)');
+            }
+
             citationChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -579,44 +594,11 @@
                     datasets: [{
                         label: 'Citations',
                         data: [3, 5, 8, 25, 44, 113, 207, 228, 271, 15], // citation data per year
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.7)',
-                            'rgba(54, 162, 235, 0.7)',
-                            'rgba(255, 206, 86, 0.7)',
-                            'rgba(75, 192, 192, 0.7)',
-                            'rgba(153, 102, 255, 0.7)',
-                            'rgba(255, 159, 64, 0.7)',
-                            'rgba(46, 204, 113, 0.7)',
-                            'rgba(142, 68, 173, 0.7)',
-                            'rgba(52, 152, 219, 0.7)',
-                            'rgba(230, 126, 34, 0.7)'
-                        ],
-                        borderColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 206, 86)',
-                            'rgb(75, 192, 192)',
-                            'rgb(153, 102, 255)',
-                            'rgb(255, 159, 64)',
-                            'rgb(46, 204, 113)',
-                            'rgb(142, 68, 173)',
-                            'rgb(52, 152, 219)',
-                            'rgb(230, 126, 34)'
-                        ],
+                        backgroundColor: bgColors,
+                        borderColor: borderColors,
                         borderWidth: 1,
                         borderRadius: 5,
-                        hoverBackgroundColor: [
-                            'rgba(255, 99, 132, 0.9)',
-                            'rgba(54, 162, 235, 0.9)',
-                            'rgba(255, 206, 86, 0.9)',
-                            'rgba(75, 192, 192, 0.9)',
-                            'rgba(153, 102, 255, 0.9)',
-                            'rgba(255, 159, 64, 0.9)',
-                            'rgba(46, 204, 113, 0.9)',
-                            'rgba(142, 68, 173, 0.9)',
-                            'rgba(52, 152, 219, 0.9)',
-                            'rgba(230, 126, 34, 0.9)'
-                        ]
+                        hoverBackgroundColor: hoverColors
                     }]
                 },
                 options: {
@@ -674,6 +656,24 @@
                     toggle.setAttribute('aria-expanded', isExpanded);
                     toggle.textContent = isExpanded ? 'Show less' : 'Show older news';
                 });
+            }
+        })();
+
+        // Scroll reveal animations
+        (function() {
+            var reveals = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                reveals.forEach(function(el) { observer.observe(el); });
+            } else {
+                reveals.forEach(function(el) { el.classList.add('visible'); });
             }
         })();
 

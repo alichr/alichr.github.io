@@ -654,7 +654,7 @@ main {
    Component - News Section with Glassmorphism
    ========================================================================== */
 .news-section {
-    max-width: 800px;
+    max-width: 900px;
     margin: 3rem auto;
     text-align: left;
     background: var(--glass-bg);
@@ -664,8 +664,6 @@ main {
     border-radius: var(--card-radius-lg);
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--glass-border);
-    opacity: 0;
-    animation: fadeInUp var(--animation-duration) var(--animation-timing) 0.6s forwards;
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
@@ -800,19 +798,20 @@ main {
 }
 
 .venue {
+    display: inline-block;
     color: var(--primary-color);
     font-weight: 600;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 0.85em;
+    background: var(--border-color);
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
 }
 
 /* ==========================================================================
    Component - CV Section (Experience & Education)
    ========================================================================== */
 .cv-section {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 3rem auto;
     text-align: left;
     background: var(--glass-bg);
@@ -822,8 +821,6 @@ main {
     border-radius: var(--card-radius-lg);
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--glass-border);
-    opacity: 0;
-    animation: fadeInUp var(--animation-duration) var(--animation-timing) 0.65s forwards;
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
@@ -942,8 +939,6 @@ main {
     border-radius: var(--card-radius-lg);
     box-shadow: var(--shadow-xl);
     border: 1px solid var(--glass-border);
-    opacity: 0;
-    animation: fadeInUp var(--animation-duration) var(--animation-timing) 0.8s forwards;
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
@@ -994,7 +989,7 @@ main {
 .chatbot-container {
     position: relative;
     width: 100%;
-    min-height: 450px;
+    min-height: 350px;
     border-radius: var(--card-radius-lg);
     background: linear-gradient(135deg, #002b5e 0%, #0a4a8a 30%, #1a6fc4 60%, #00d4ff 100%);
     background-size: 200% 200%;
@@ -1033,29 +1028,29 @@ html.dark-mode .chatbot-container {
 }
 
 .chatbot-container:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: var(--shadow-xl), 0 0 60px rgba(0, 212, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl), 0 0 40px rgba(0, 212, 255, 0.2);
 }
 
 .chatbot-placeholder {
     text-align: center;
     color: white;
-    padding: 3rem 2rem;
+    padding: 2rem 2rem;
     max-width: 600px;
     position: relative;
     z-index: 2;
 }
 
 .chatbot-icon {
-    font-size: 5rem;
-    margin-bottom: 2rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.25rem;
     animation: float 3s ease-in-out infinite;
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
 }
 
 .chatbot-placeholder h3 {
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
     font-weight: 700;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     opacity: 0;
@@ -1063,8 +1058,8 @@ html.dark-mode .chatbot-container {
 }
 
 .chatbot-placeholder p {
-    font-size: 1.2rem;
-    margin-bottom: 2.5rem;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
     opacity: 0;
     line-height: 1.7;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -1103,16 +1098,16 @@ html.dark-mode .chatbot-container {
 
 .chatbot-launch-button {
     display: inline-block;
-    padding: 1.25rem 3rem;
+    padding: 1rem 2.5rem;
     background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
     color: #002b5e;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     transition: all 0.4s var(--animation-timing);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    border: 3px solid rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.9);
     position: relative;
     overflow: hidden;
     opacity: 0;
@@ -1199,8 +1194,6 @@ html.dark-mode .chatbot-container {
     border-radius: var(--card-radius-lg);
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--glass-border);
-    opacity: 0;
-    animation: fadeInUp var(--animation-duration) var(--animation-timing) 1s forwards;
     transition: all 0.4s ease;
     position: relative;
 }
@@ -1259,8 +1252,6 @@ html.dark-mode .chatbot-container {
     border-radius: var(--card-radius);
     box-shadow: var(--shadow-md);
     height: 300px;
-    opacity: 0;
-    animation: slideInLeft var(--animation-duration) var(--animation-timing) 0.8s forwards;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
 }
@@ -1282,8 +1273,6 @@ html.dark-mode .chatbot-container {
     padding: 1.5rem;
     border-radius: var(--card-radius);
     box-shadow: var(--shadow-md);
-    opacity: 0;
-    animation: slideInRight var(--animation-duration) var(--animation-timing) 0.8s forwards;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
 }
@@ -1384,7 +1373,7 @@ html.dark-mode .chatbot-container {
 
 .publications-list li:hover,
 .publication-item:hover {
-    transform: translateY(-4px) translateX(4px);
+    transform: translateY(-2px);
     background: var(--card-bg);
     box-shadow: var(--shadow-lg);
     border-color: var(--primary-color);
@@ -1548,6 +1537,20 @@ html.dark-mode .visitor-counter {
    ========================================================================== */
 .text-center {
     text-align: center;
+}
+
+/* ==========================================================================
+   Scroll Reveal Animations
+   ========================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .mt-1 { margin-top: 0.5rem; }
@@ -1835,5 +1838,11 @@ html.dark-mode .visitor-counter {
     .chatbot-container {
         animation: none;
         background-size: 100% 100%;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 }
