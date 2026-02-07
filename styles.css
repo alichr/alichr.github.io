@@ -642,6 +642,66 @@ html.dark-mode .bio-text .research-interests {
 }
 
 /* ==========================================================================
+   Component - Section Navigation (Sticky)
+   ========================================================================== */
+.section-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.4s ease, box-shadow 0.3s ease;
+}
+
+.section-nav-content {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.section-nav-content::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.3s var(--animation-timing);
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+    background: var(--border-color);
+}
+
+@media (max-width: 480px) {
+    .section-nav-content {
+        justify-content: flex-start;
+        gap: 0.15rem;
+        padding: 0.4rem 0.75rem;
+    }
+
+    .nav-link {
+        padding: 0.4rem 0.9rem;
+        font-size: 0.82rem;
+    }
+}
+
+/* ==========================================================================
    Layout - Main Content
    ========================================================================== */
 main {
@@ -765,6 +825,40 @@ main {
     color: var(--hover-color);
 }
 
+.news-older {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.news-older.expanded {
+    max-height: 1000px;
+}
+
+.news-toggle {
+    display: block;
+    margin: 1rem auto 0;
+    padding: 0.5rem 1.5rem;
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s var(--animation-timing);
+    position: relative;
+    z-index: 1;
+}
+
+.news-toggle:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
 .venue {
     color: var(--primary-color);
     font-weight: 600;
@@ -772,6 +866,257 @@ main {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+/* ==========================================================================
+   Component - Experience Section
+   ========================================================================== */
+.experience-section {
+    max-width: 800px;
+    margin: 3rem auto;
+    text-align: left;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    padding: var(--section-padding);
+    border-radius: var(--card-radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--glass-border);
+    opacity: 0;
+    animation: fadeInUp var(--animation-duration) var(--animation-timing) 0.65s forwards;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.experience-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(167, 197, 237, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.experience-section:hover {
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+.experience-section h2 {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.experience-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+.experience-list {
+    position: relative;
+    z-index: 1;
+}
+
+.experience-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s var(--animation-timing);
+}
+
+.experience-item:last-child {
+    margin-bottom: 0;
+}
+
+.experience-item:hover {
+    transform: translateY(-4px) translateX(4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.experience-year {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding-top: 0.15rem;
+    white-space: nowrap;
+}
+
+.experience-details strong {
+    color: var(--primary-color);
+    font-size: 1.05rem;
+    line-height: 1.4;
+}
+
+.experience-org {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .experience-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .experience-section {
+        padding: 1.25rem;
+        margin: 1.5rem auto;
+    }
+}
+
+/* ==========================================================================
+   Component - Education Section
+   ========================================================================== */
+.education-section {
+    max-width: 800px;
+    margin: 3rem auto;
+    text-align: left;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    padding: var(--section-padding);
+    border-radius: var(--card-radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--glass-border);
+    opacity: 0;
+    animation: fadeInUp var(--animation-duration) var(--animation-timing) 0.7s forwards;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.education-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(167, 197, 237, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.education-section:hover {
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+.education-section h2 {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.education-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+.education-list {
+    position: relative;
+    z-index: 1;
+}
+
+.education-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.4s var(--animation-timing);
+}
+
+.education-item:last-child {
+    margin-bottom: 0;
+}
+
+.education-item:hover {
+    transform: translateY(-4px) translateX(4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.education-year {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding-top: 0.15rem;
+    white-space: nowrap;
+}
+
+.education-details strong {
+    color: var(--primary-color);
+    font-size: 1.05rem;
+    line-height: 1.4;
+}
+
+.education-university {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-top: 0.25rem;
+}
+
+.education-thesis {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+    line-height: 1.5;
+}
+
+.education-supervisor {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .education-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .education-section {
+        padding: 1.25rem;
+        margin: 1.5rem auto;
+    }
 }
 
 /* ==========================================================================
@@ -1279,6 +1624,20 @@ html.dark-mode .publication-thumbnail {
 .publication-content a {
     text-decoration: none;
     transition: color 0.3s ease;
+}
+
+.publication-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.15rem 0.6rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+    margin-left: 0.35rem;
 }
 
 .publication-content a:hover strong {

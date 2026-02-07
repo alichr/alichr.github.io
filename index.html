@@ -27,10 +27,45 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
     <link rel="apple-touch-icon" href="./images/profile.webp">
 
+    <link rel="canonical" href="https://alichr.github.io/">
     <title>Ali Cheraghian - Senior AI/ML Scientist</title>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ali Cheraghian",
+        "jobTitle": "Senior AI/ML Scientist",
+        "affiliation": {
+            "@type": "Organization",
+            "name": "Macquarie University"
+        },
+        "alumniOf": [
+            {
+                "@type": "Organization",
+                "name": "Australian National University"
+            },
+            {
+                "@type": "Organization",
+                "name": "Amirkabir University of Technology"
+            }
+        ],
+        "url": "https://alichr.github.io",
+        "image": "https://alichr.github.io/images/profile.webp",
+        "sameAs": [
+            "https://www.linkedin.com/in/ali-cheraghian/",
+            "https://github.com/alichr",
+            "https://scholar.google.com/citations?user=QT0EXIkAAAAJ"
+        ],
+        "knowsAbout": ["Computer Vision", "Machine Learning", "Vision-Language Models", "Knowledge Distillation", "3D Point Clouds"]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script>
         // Prevent flash of wrong theme
         (function() {
@@ -56,7 +91,7 @@
                 <span class="moon-icon" aria-hidden="true">&#9790;</span>
             </button>
 
-            <img src="./images/profile.webp" alt="Ali Cheraghian - Profile Photo" class="profile-photo" loading="lazy">
+            <img src="./images/profile.webp" alt="Ali Cheraghian - Profile Photo" class="profile-photo">
             <h1>Ali Cheraghian</h1>
             <p class="title">Senior AI/ML Scientist | Macquarie University</p>
 
@@ -89,6 +124,16 @@
         </div>
     </header>
 
+    <nav class="section-nav" id="section-nav" role="navigation" aria-label="Page sections">
+        <div class="section-nav-content">
+            <a href="#news-heading" class="nav-link">News</a>
+            <a href="#experience-heading" class="nav-link">Experience</a>
+            <a href="#education-heading" class="nav-link">Education</a>
+            <a href="#chatbot-heading" class="nav-link">Ask Me</a>
+            <a href="#publications-heading" class="nav-link">Publications</a>
+        </div>
+    </nav>
+
     <main id="main-content" role="main">
         <section class="news-section" aria-labelledby="news-heading">
             <h2 id="news-heading">News</h2>
@@ -98,54 +143,86 @@
                 <li>Our paper "Adapt-As-You-Walk Through the Clouds: Training-Free Online Test-Time Adaptation of 3D Vision-Language Foundation Models" has been accepted to <span class="venue">AAAI'26</span></li>
                 <li>Our paper "SDMD: Subspace-Driven Model Distillation in Indefinite Inner Product Spaces" has been accepted to <span class="venue">WACV'26</span></li>
                 <li>I have started a new position as Senior AI/ML Scientist at Macquarie University's Silicon Platforms Lab starting from <span class="venue">August 2025</span></li>
-                <li>Our paper "LumiNet: Perception-Driven Knowledge Distillation via Statistical Logit Calibration" has been accepted to <span class="venue">TMLR'25</span></li>
-                <li>Our papers "ETTA: Efficient Test-Time Adaptation for Vision-Language Models" and "Task Progressive Curriculum Learning" have been accepted to <span class="venue">BMVC'25</span></li>
-                <li>Our paper "Test-Time Adaptation of 3D Point Clouds via Denoising Diffusion Models" has been accepted to <span class="venue">WACV'25</span></li>
-                <li>Our paper "Canonical shape projection is all you need for 3d few-shot class incremental learning" has been accepted to <span class="venue">ECCV'24</span></li>
-                <li>Our paper "Backpropagation-free Network for 3D Test-time Adaptation" has been accepted to <span class="venue">CVPR'24</span></li>
-                <li>Our paper "Continual test-time domain adaptation via dynamic sample selection" has been accepted to <span class="venue">WACV'24</span></li>
-                <li>Our paper "Foundation Model-Powered 3D Few-Shot Class Incremental Learning via Training-free Adaptor" has been accepted to <span class="venue">ACCV'24</span></li>
-                <li>Our paper "3D Point Cloud Network Pruning: When Some Weights Do not Matter" has been accepted to <span class="venue">BMVC'24</span></li>
-                <li>Our paper "3D scene generation for zero-shot learning using ChatGPT guided language prompts" has been accepted to <span class="venue">CVIU'24</span></li>
-                <li>Our papers "Efficient Atmospheric Correction" and "Enhancing Glaucoma Diagnosis" have been accepted to <span class="venue">DICTA'24</span></li>
             </ul>
+            <div class="news-older" id="news-older">
+                <ul>
+                    <li>Our paper "LumiNet: Perception-Driven Knowledge Distillation via Statistical Logit Calibration" has been accepted to <span class="venue">TMLR'25</span></li>
+                    <li>Our papers "ETTA: Efficient Test-Time Adaptation for Vision-Language Models" and "Task Progressive Curriculum Learning" have been accepted to <span class="venue">BMVC'25</span></li>
+                    <li>Our paper "Test-Time Adaptation of 3D Point Clouds via Denoising Diffusion Models" has been accepted to <span class="venue">WACV'25</span></li>
+                    <li>Our paper "Canonical shape projection is all you need for 3d few-shot class incremental learning" has been accepted to <span class="venue">ECCV'24</span></li>
+                    <li>Our paper "Backpropagation-free Network for 3D Test-time Adaptation" has been accepted to <span class="venue">CVPR'24</span></li>
+                    <li>Our paper "Continual test-time domain adaptation via dynamic sample selection" has been accepted to <span class="venue">WACV'24</span></li>
+                    <li>Our paper "Foundation Model-Powered 3D Few-Shot Class Incremental Learning via Training-free Adaptor" has been accepted to <span class="venue">ACCV'24</span></li>
+                    <li>Our paper "3D Point Cloud Network Pruning: When Some Weights Do not Matter" has been accepted to <span class="venue">BMVC'24</span></li>
+                    <li>Our paper "3D scene generation for zero-shot learning using ChatGPT guided language prompts" has been accepted to <span class="venue">CVIU'24</span></li>
+                    <li>Our papers "Efficient Atmospheric Correction" and "Enhancing Glaucoma Diagnosis" have been accepted to <span class="venue">DICTA'24</span></li>
+                </ul>
+            </div>
+            <button class="news-toggle" id="news-toggle" type="button" aria-expanded="false" aria-controls="news-older">Show older news</button>
         </section>
 
-        <section class="chatbot-section" aria-labelledby="chatbot-heading">
-            <h2 id="chatbot-heading">Ask Me Anything</h2>
-            <div class="chatbot-description">
-                <p>Have questions about my research, career, or want to know more about my work? Chat with my AI assistant that knows about my background, publications, and expertise. Feel free to ask about my research areas, publications, or any other questions you might have!</p>
-            </div>
-            <div class="chatbot-container">
-                <div class="chatbot-placeholder">
-                    <div class="chatbot-icon" aria-hidden="true">&#129302;</div>
-                    <h3>Chat with Ali's AI Assistant</h3>
-                    <p>Engage with my intelligent AI assistant that has comprehensive knowledge about my research journey, publications, and expertise in AI/ML, computer vision, and generative technologies.</p>
-
-                    <div class="sample-questions" role="list" aria-label="Sample questions you can ask">
-                        <span class="sample-question" role="listitem" tabindex="0">What are your main research areas?</span>
-                        <span class="sample-question" role="listitem" tabindex="0">Tell me about your publications</span>
-                        <span class="sample-question" role="listitem" tabindex="0">What's your career journey?</span>
-                        <span class="sample-question" role="listitem" tabindex="0">How can I collaborate?</span>
+        <section class="experience-section" aria-labelledby="experience-heading">
+            <h2 id="experience-heading">Experience</h2>
+            <div class="experience-list">
+                <div class="experience-item">
+                    <div class="experience-year">2025 — Present</div>
+                    <div class="experience-details">
+                        <strong>Senior AI/ML Scientist</strong>
+                        <div class="experience-org">Macquarie University — Department of Engineering</div>
                     </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-year">2024 — Present</div>
+                    <div class="experience-details">
+                        <strong>Adjunct Lecturer</strong>
+                        <div class="experience-org">Australian National University (ANU)</div>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-year">2024 — Present</div>
+                    <div class="experience-details">
+                        <strong>Adjunct Senior ML Scientist</strong>
+                        <div class="experience-org">University of Technology Sydney (UTS) — Department of Health</div>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-year">2020 — 2025</div>
+                    <div class="experience-details">
+                        <strong>Computer Vision Scientist</strong>
+                        <div class="experience-org">CSIRO Data61</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <a href="https://huggingface.co/spaces/alichr/career_conversation" target="_blank" rel="noopener noreferrer" class="chatbot-launch-button" aria-label="Start conversation with AI assistant (opens in new tab)">
-                        &#128640; Start Conversation
-                    </a>
-
-                    <div class="ai-features" role="list" aria-label="AI assistant features">
-                        <div class="ai-feature" role="listitem">
-                            <span class="ai-feature-icon" aria-hidden="true">&#129504;</span>
-                            <div class="ai-feature-text">Research Expert</div>
-                        </div>
-                        <div class="ai-feature" role="listitem">
-                            <span class="ai-feature-icon" aria-hidden="true">&#128218;</span>
-                            <div class="ai-feature-text">Publication Knowledge</div>
-                        </div>
-                        <div class="ai-feature" role="listitem">
-                            <span class="ai-feature-icon" aria-hidden="true">&#127919;</span>
-                            <div class="ai-feature-text">Collaboration Ready</div>
-                        </div>
+        <section class="education-section" aria-labelledby="education-heading">
+            <h2 id="education-heading">Education</h2>
+            <div class="education-list">
+                <div class="education-item">
+                    <div class="education-year">2016 — 2022</div>
+                    <div class="education-details">
+                        <strong>Ph.D., Engineering and Computer Science</strong>
+                        <div class="education-university">Australian National University (ANU)</div>
+                        <div class="education-thesis">Thesis: <em>Exploring 3D Data and Beyond in a Low Data Regime</em></div>
+                        <div class="education-supervisor">Supervisors: Dr. Lars Petersson, Dr. Dylan Campbell, and Dr. Mehrtash Harandi</div>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-year">2009 — 2011</div>
+                    <div class="education-details">
+                        <strong>M.Sc., Electrical Engineering</strong>
+                        <div class="education-university">Amirkabir University of Technology (Tehran Polytechnic)</div>
+                        <div class="education-thesis">Thesis: <em>3D Face Recognition Robust to Pose Variation</em></div>
+                        <div class="education-supervisor">Supervisor: Dr. Karim Faez</div>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-year">2005 — 2008</div>
+                    <div class="education-details">
+                        <strong>B.Sc., Electrical Engineering</strong>
+                        <div class="education-university">Shiraz University of Technology (Shiraz Polytechnic)</div>
+                        <div class="education-thesis">Thesis: <em>Microcontroller-Based Electronic Calendar System</em></div>
+                        <div class="education-supervisor">Supervisor: Dr. Mohammad Sadegh Hadaegh</div>
                     </div>
                 </div>
             </div>
@@ -201,7 +278,7 @@
                         <article class="publication-content">
                             <a href="#" target="_blank" rel="noopener noreferrer"><strong>DTO-KD: Dynamic Trade-off Optimization for Effective Knowledge Distillation</strong></a><br>
                             Zeeshan Hayder, Ali Cheraghian, Lars Petersson, Mehrtash Harandi, Richard Hartley<br>
-                            ICLR 2026 (Oral)
+                            ICLR 2026 <span class="publication-badge">Oral</span>
                         </article>
                     </li>
                 </ul>
@@ -419,6 +496,46 @@
                 </ul>
             </div>
         </section>
+
+        <section class="chatbot-section" aria-labelledby="chatbot-heading">
+            <h2 id="chatbot-heading">Ask Me Anything</h2>
+            <div class="chatbot-description">
+                <p>Have questions about my research, career, or want to know more about my work? Chat with my AI assistant that knows about my background, publications, and expertise. Feel free to ask about my research areas, publications, or any other questions you might have!</p>
+            </div>
+            <div class="chatbot-container">
+                <div class="chatbot-placeholder">
+                    <div class="chatbot-icon" aria-hidden="true">&#129302;</div>
+                    <h3>Chat with Ali's AI Assistant</h3>
+                    <p>Engage with my intelligent AI assistant that has comprehensive knowledge about my research journey, publications, and expertise in AI/ML, computer vision, and generative technologies.</p>
+
+                    <div class="sample-questions" role="list" aria-label="Sample questions you can ask">
+                        <span class="sample-question" role="listitem" tabindex="0">What are your main research areas?</span>
+                        <span class="sample-question" role="listitem" tabindex="0">Tell me about your publications</span>
+                        <span class="sample-question" role="listitem" tabindex="0">What's your career journey?</span>
+                        <span class="sample-question" role="listitem" tabindex="0">How can I collaborate?</span>
+                    </div>
+
+                    <a href="https://huggingface.co/spaces/alichr/career_conversation" target="_blank" rel="noopener noreferrer" class="chatbot-launch-button" aria-label="Start conversation with AI assistant (opens in new tab)">
+                        &#128640; Start Conversation
+                    </a>
+
+                    <div class="ai-features" role="list" aria-label="AI assistant features">
+                        <div class="ai-feature" role="listitem">
+                            <span class="ai-feature-icon" aria-hidden="true">&#129504;</span>
+                            <div class="ai-feature-text">Research Expert</div>
+                        </div>
+                        <div class="ai-feature" role="listitem">
+                            <span class="ai-feature-icon" aria-hidden="true">&#128218;</span>
+                            <div class="ai-feature-text">Publication Knowledge</div>
+                        </div>
+                        <div class="ai-feature" role="listitem">
+                            <span class="ai-feature-icon" aria-hidden="true">&#127919;</span>
+                            <div class="ai-feature-text">Collaboration Ready</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer role="contentinfo">
@@ -449,6 +566,16 @@
                 const isDark = document.documentElement.classList.contains('dark-mode');
                 localStorage.setItem('theme', isDark ? 'dark' : 'light');
                 updateThemeColor();
+
+                // Update chart colors
+                if (typeof citationChart !== 'undefined') {
+                    const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)';
+                    const tickColor = isDark ? '#c9d1d9' : '#333';
+                    citationChart.options.scales.y.grid.color = gridColor;
+                    citationChart.options.scales.y.ticks.color = tickColor;
+                    citationChart.options.scales.x.ticks.color = tickColor;
+                    citationChart.update();
+                }
             });
 
             // Update theme color on load
@@ -470,100 +597,116 @@
         // Update copyright year
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // Citation chart
-        const ctx = document.getElementById('citationChart').getContext('2d');
-        const isDarkMode = document.documentElement.classList.contains('dark-mode');
+        // Citation chart (wrapped in DOMContentLoaded since Chart.js is deferred)
+        var citationChart;
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('citationChart').getContext('2d');
+            const isDark = document.documentElement.classList.contains('dark-mode');
 
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'],
-                datasets: [{
-                    label: 'Citations',
-                    data: [3, 5, 8, 25, 44, 113, 207, 228, 271, 15], // citation data per year
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.7)',
-                        'rgba(54, 162, 235, 0.7)',
-                        'rgba(255, 206, 86, 0.7)',
-                        'rgba(75, 192, 192, 0.7)',
-                        'rgba(153, 102, 255, 0.7)',
-                        'rgba(255, 159, 64, 0.7)',
-                        'rgba(46, 204, 113, 0.7)',
-                        'rgba(142, 68, 173, 0.7)',
-                        'rgba(52, 152, 219, 0.7)',
-                        'rgba(230, 126, 34, 0.7)'
-                    ],
-                    borderColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 206, 86)',
-                        'rgb(75, 192, 192)',
-                        'rgb(153, 102, 255)',
-                        'rgb(255, 159, 64)',
-                        'rgb(46, 204, 113)',
-                        'rgb(142, 68, 173)',
-                        'rgb(52, 152, 219)',
-                        'rgb(230, 126, 34)'
-                    ],
-                    borderWidth: 1,
-                    borderRadius: 5,
-                    hoverBackgroundColor: [
-                        'rgba(255, 99, 132, 0.9)',
-                        'rgba(54, 162, 235, 0.9)',
-                        'rgba(255, 206, 86, 0.9)',
-                        'rgba(75, 192, 192, 0.9)',
-                        'rgba(153, 102, 255, 0.9)',
-                        'rgba(255, 159, 64, 0.9)',
-                        'rgba(46, 204, 113, 0.9)',
-                        'rgba(142, 68, 173, 0.9)',
-                        'rgba(52, 152, 219, 0.9)',
-                        'rgba(230, 126, 34, 0.9)'
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+            citationChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'],
+                    datasets: [{
+                        label: 'Citations',
+                        data: [3, 5, 8, 25, 44, 113, 207, 228, 271, 15], // citation data per year
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(255, 159, 64, 0.7)',
+                            'rgba(46, 204, 113, 0.7)',
+                            'rgba(142, 68, 173, 0.7)',
+                            'rgba(52, 152, 219, 0.7)',
+                            'rgba(230, 126, 34, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 206, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(153, 102, 255)',
+                            'rgb(255, 159, 64)',
+                            'rgb(46, 204, 113)',
+                            'rgb(142, 68, 173)',
+                            'rgb(52, 152, 219)',
+                            'rgb(230, 126, 34)'
+                        ],
+                        borderWidth: 1,
+                        borderRadius: 5,
+                        hoverBackgroundColor: [
+                            'rgba(255, 99, 132, 0.9)',
+                            'rgba(54, 162, 235, 0.9)',
+                            'rgba(255, 206, 86, 0.9)',
+                            'rgba(75, 192, 192, 0.9)',
+                            'rgba(153, 102, 255, 0.9)',
+                            'rgba(255, 159, 64, 0.9)',
+                            'rgba(46, 204, 113, 0.9)',
+                            'rgba(142, 68, 173, 0.9)',
+                            'rgba(52, 152, 219, 0.9)',
+                            'rgba(230, 126, 34, 0.9)'
+                        ]
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Montserrat'
-                            },
-                            color: isDarkMode ? '#c9d1d9' : '#333'
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
                         }
                     },
-                    x: {
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Montserrat'
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'
                             },
-                            color: isDarkMode ? '#c9d1d9' : '#333'
+                            ticks: {
+                                font: {
+                                    family: 'Montserrat'
+                                },
+                                color: isDark ? '#c9d1d9' : '#333'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Montserrat'
+                                },
+                                color: isDark ? '#c9d1d9' : '#333'
+                            }
                         }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeInOutQuart'
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
                     }
-                },
-                animation: {
-                    duration: 2000,
-                    easing: 'easeInOutQuart'
-                },
-                hover: {
-                    mode: 'nearest',
-                    intersect: true
                 }
-            }
+            });
         });
+
+        // News toggle
+        (function() {
+            const toggle = document.getElementById('news-toggle');
+            const older = document.getElementById('news-older');
+            if (toggle && older) {
+                toggle.addEventListener('click', function() {
+                    const isExpanded = older.classList.toggle('expanded');
+                    toggle.setAttribute('aria-expanded', isExpanded);
+                    toggle.textContent = isExpanded ? 'Show less' : 'Show older news';
+                });
+            }
+        })();
 
         // Interactive sample questions for chatbot
         document.addEventListener('DOMContentLoaded', function() {
