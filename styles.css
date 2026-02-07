@@ -1441,99 +1441,17 @@ html.dark-mode .publication-thumbnail {
 }
 
 /* ==========================================================================
-   Component - Research Areas Section
+   Component - Research Areas (extends CV Section styles)
    ========================================================================== */
-.research-areas {
-    max-width: 900px;
-    margin: 3rem auto;
-    text-align: left;
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    padding: var(--section-padding);
-    border-radius: var(--card-radius-lg);
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--glass-border);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.research-areas::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(167, 197, 237, 0.05) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-.research-areas:hover {
-    box-shadow: var(--shadow-xl), var(--shadow-glow);
-    transform: translateY(-2px);
-}
-
-.research-areas h2 {
-    text-align: left;
-    margin-bottom: 1.25rem;
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    position: relative;
-    padding-bottom: 0.75rem;
-}
-
-.research-areas h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    border-radius: 2px;
-}
-
-.research-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-    position: relative;
-    z-index: 1;
-}
-
-.research-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 0.85rem 1rem;
-    transition: all 0.3s ease;
-    border-left: 3px solid var(--primary-color);
-}
-
-.research-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
-    border-left-color: var(--accent-color);
-}
-
-.research-card h3 {
-    color: var(--primary-color);
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
-}
-
-.research-tags {
-    color: var(--text-muted);
+.research-venues {
     font-size: 0.78rem;
-    line-height: 1.4;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 0.2rem;
 }
 
-@media (max-width: 768px) {
-    .research-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.research-col-heading {
+    visibility: hidden;
 }
 
 /* ==========================================================================
@@ -1916,8 +1834,8 @@ html.dark-mode .visitor-counter {
         font-size: 0.85rem;
     }
 
-    .research-grid {
-        grid-template-columns: 1fr;
+    .research-col-heading {
+        display: none;
     }
 
     .pub-filters {
