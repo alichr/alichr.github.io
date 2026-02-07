@@ -1458,15 +1458,18 @@ html.dark-mode .publication-thumbnail {
    Component - Venue Tier Badges
    ========================================================================== */
 .venue-badge {
-    display: inline-block;
+    display: inline;
     font-size: 0.65rem;
     font-weight: 600;
-    padding: 0.05rem 0.3rem;
+    padding: 0.1rem 0.35rem;
     border-radius: 3px;
     letter-spacing: 0.3px;
     vertical-align: middle;
     margin-left: 0.25rem;
     line-height: 1;
+    white-space: nowrap;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 }
 
 .venue-badge.tier-1 {
