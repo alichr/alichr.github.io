@@ -61,7 +61,7 @@ def update_html_file(file_path, citation_data):
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
 
-        # Update total citations
+        # Update total citations (stats panel)
         content = re.sub(
             r'(<span class="stat-label">Total Citations</span>\s*<span class="stat-value">)\d+',
             f'\\g<1>{citation_data["total_citations"]}',
@@ -69,7 +69,7 @@ def update_html_file(file_path, citation_data):
             flags=re.DOTALL
         )
 
-        # Update h-index
+        # Update h-index (stats panel)
         content = re.sub(
             r'(<span class="stat-label">h-index</span>\s*<span class="stat-value">)\d+',
             f'\\g<1>{citation_data["h_index"]}',
@@ -77,12 +77,34 @@ def update_html_file(file_path, citation_data):
             flags=re.DOTALL
         )
 
-        # Update i10-index
+        # Update i10-index (stats panel)
         content = re.sub(
             r'(<span class="stat-label">i10-index</span>\s*<span class="stat-value">)\d+',
             f'\\g<1>{citation_data["i10_index"]}',
             content,
             flags=re.DOTALL
+        )
+
+        # Update header metric badges
+        content = re.sub(
+            r'(<span class="metric-value">)\d+\+?(</span>\s*<span class="metric-label">Citations)',
+            f'\\g<1>{citation_data["total_citations"]}+\\g<2>',
+            content,
+            flags=re.DOTALL
+        )
+
+        content = re.sub(
+            r'(<span class="metric-value">)\d+(</span>\s*<span class="metric-label">h-index)',
+            f'\\g<1>{citation_data["h_index"]}\\g<2>',
+            content,
+            flags=re.DOTALL
+        )
+
+        # Update meta description citation count
+        content = re.sub(
+            r'(\d+) publications at CVPR, ICCV, ECCV, ICLR \(\d+\+ citations\)',
+            f'\\g<1> publications at CVPR, ICCV, ECCV, ICLR ({citation_data["total_citations"]}+ citations)',
+            content
         )
 
         # Update chart data
