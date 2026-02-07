@@ -2035,6 +2035,64 @@ html.dark-mode .visitor-counter {
     .footer-content {
         padding: 0 1rem;
     }
+
+    /* Research cards - reduce left padding for icons */
+    .research-card {
+        padding: 0.6rem 0.6rem 0.6rem 2.5rem !important;
+    }
+
+    .research-icon {
+        left: 0.5rem;
+        top: 0.6rem;
+        width: 20px;
+        height: 20px;
+    }
+
+    .research-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* CV timeline - adjust for single column */
+    .cv-list:not(.research-list) {
+        padding-left: 1rem;
+        margin-left: 0.15rem;
+    }
+
+    .cv-list:not(.research-list) .cv-item::before {
+        left: -1.25rem;
+        width: 8px;
+        height: 8px;
+    }
+
+    /* Hero venue tags - ensure wrapping */
+    .hero-venues {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem;
+    }
+
+    /* Publication year badges - reduce spacing */
+    .publications-list h4 {
+        margin: 1.75rem 0 1rem;
+        font-size: 0.9rem;
+        padding: 0.35rem 1rem;
+    }
+
+    /* Stat items - reduce padding */
+    .stat-item {
+        padding: 0.75rem;
+    }
+
+    .stat-value {
+        font-size: 1.3rem;
+    }
+
+    /* Reduce hero gap in column layout */
+    .hero-layout {
+        gap: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2100,6 +2158,57 @@ html.dark-mode .visitor-counter {
         width: 42px;
         height: 42px;
         font-size: 1.1rem;
+    }
+
+    /* Research cards - compact on small screens */
+    .research-card {
+        padding: 0.5rem 0.5rem 0.5rem 2.25rem !important;
+    }
+
+    .research-icon {
+        left: 0.4rem;
+        top: 0.5rem;
+        width: 18px;
+        height: 18px;
+    }
+
+    .research-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* CV timeline - compact */
+    .cv-list:not(.research-list) {
+        padding-left: 0.85rem;
+        margin-left: 0.1rem;
+    }
+
+    .cv-list:not(.research-list) .cv-item::before {
+        left: -1.1rem;
+        width: 7px;
+        height: 7px;
+    }
+
+    /* Hero venue tags */
+    .hero-venue-tag {
+        font-size: 0.7rem;
+        padding: 0.1rem 0.4rem;
+    }
+
+    /* Publication year badges */
+    .publications-list h4 {
+        margin: 1.5rem 0 0.75rem;
+        font-size: 0.85rem;
+        padding: 0.3rem 0.9rem;
+    }
+
+    /* Stat items */
+    .stat-item {
+        padding: 0.6rem;
+    }
+
+    .stat-value {
+        font-size: 1.2rem;
     }
 }
 
