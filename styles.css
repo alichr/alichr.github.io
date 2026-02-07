@@ -2012,7 +2012,10 @@ html.dark-mode .visitor-counter {
         flex-direction: column;
     }
 
-    .citation-graph,
+    .citation-graph {
+        display: none;
+    }
+
     .citation-stats {
         width: 100%;
     }
