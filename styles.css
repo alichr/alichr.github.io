@@ -869,10 +869,10 @@ main {
 }
 
 /* ==========================================================================
-   Component - Experience Section
+   Component - CV Section (Experience & Education)
    ========================================================================== */
-.experience-section {
-    max-width: 800px;
+.cv-section {
+    max-width: 1000px;
     margin: 3rem auto;
     text-align: left;
     background: var(--glass-bg);
@@ -889,7 +889,7 @@ main {
     overflow: hidden;
 }
 
-.experience-section::before {
+.cv-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -900,222 +900,91 @@ main {
     pointer-events: none;
 }
 
-.experience-section:hover {
+.cv-section:hover {
     box-shadow: var(--shadow-xl), var(--shadow-glow);
     transform: translateY(-2px);
 }
 
-.experience-section h2 {
+.cv-section h2 {
     text-align: left;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
     color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     position: relative;
-    padding-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
 }
 
-.experience-section h2::after {
+.cv-section h2::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 60px;
-    height: 3px;
+    width: 50px;
+    height: 2px;
     background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
     border-radius: 2px;
 }
 
-.experience-list {
+.cv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
     position: relative;
     z-index: 1;
 }
 
-.experience-item {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    gap: 1.25rem;
-    padding: 1.25rem;
-    margin-bottom: 1rem;
-    border-radius: var(--card-radius);
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-    transition: all 0.4s var(--animation-timing);
+.cv-list {
+    position: relative;
 }
 
-.experience-item:last-child {
-    margin-bottom: 0;
-}
-
-.experience-item:hover {
-    transform: translateY(-4px) translateX(4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--primary-color);
-}
-
-.experience-year {
-    color: var(--primary-color);
-    font-weight: 700;
+.cv-item {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border-color);
     font-size: 0.95rem;
-    padding-top: 0.15rem;
-    white-space: nowrap;
-}
-
-.experience-details strong {
-    color: var(--primary-color);
-    font-size: 1.05rem;
-    line-height: 1.4;
-}
-
-.experience-org {
-    color: var(--text-color);
-    font-weight: 500;
-    margin-top: 0.25rem;
-}
-
-@media (max-width: 768px) {
-    .experience-item {
-        grid-template-columns: 1fr;
-        gap: 0.25rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .experience-section {
-        padding: 1.25rem;
-        margin: 1.5rem auto;
-    }
-}
-
-/* ==========================================================================
-   Component - Education Section
-   ========================================================================== */
-.education-section {
-    max-width: 800px;
-    margin: 3rem auto;
-    text-align: left;
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    padding: var(--section-padding);
-    border-radius: var(--card-radius-lg);
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--glass-border);
-    opacity: 0;
-    animation: fadeInUp var(--animation-duration) var(--animation-timing) 0.7s forwards;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.education-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(167, 197, 237, 0.05) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-.education-section:hover {
-    box-shadow: var(--shadow-xl), var(--shadow-glow);
-    transform: translateY(-2px);
-}
-
-.education-section h2 {
-    text-align: left;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    position: relative;
-    padding-bottom: 0.75rem;
-}
-
-.education-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    border-radius: 2px;
-}
-
-.education-list {
-    position: relative;
-    z-index: 1;
-}
-
-.education-item {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    gap: 1.25rem;
-    padding: 1.25rem;
-    margin-bottom: 1rem;
-    border-radius: var(--card-radius);
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-    transition: all 0.4s var(--animation-timing);
-}
-
-.education-item:last-child {
-    margin-bottom: 0;
-}
-
-.education-item:hover {
-    transform: translateY(-4px) translateX(4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--primary-color);
-}
-
-.education-year {
-    color: var(--primary-color);
-    font-weight: 700;
-    font-size: 0.95rem;
-    padding-top: 0.15rem;
-    white-space: nowrap;
-}
-
-.education-details strong {
-    color: var(--primary-color);
-    font-size: 1.05rem;
-    line-height: 1.4;
-}
-
-.education-university {
-    color: var(--text-color);
-    font-weight: 500;
-    margin-top: 0.25rem;
-}
-
-.education-thesis {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-top: 0.4rem;
     line-height: 1.5;
+    color: var(--text-color);
 }
 
-.education-supervisor {
+.cv-item:last-child {
+    border-bottom: none;
+}
+
+.cv-year {
     color: var(--text-muted);
     font-size: 0.85rem;
-    margin-top: 0.25rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+}
+
+.cv-title {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.cv-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-top: 0.15rem;
+    padding-left: 0;
 }
 
 @media (max-width: 768px) {
-    .education-item {
+    .cv-grid {
         grid-template-columns: 1fr;
-        gap: 0.25rem;
+        gap: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .education-section {
+    .cv-section {
         padding: 1.25rem;
         margin: 1.5rem auto;
+    }
+    .cv-year {
+        display: block;
+        margin-bottom: 0.1rem;
     }
 }
 
