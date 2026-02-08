@@ -68,43 +68,9 @@
 
 /* ==========================================================================
    CSS Variables - Dark Mode
+   Managed via html.dark-mode class (set by JS based on system preference
+   or user toggle). Single source of truth for dark theme variables.
    ========================================================================== */
-@media (prefers-color-scheme: dark) {
-    :root:not(.light-mode) {
-        --primary-color: #58a6ff;
-        --primary-light: #79c0ff;
-        --primary-dark: #388bfd;
-        --secondary-color: #8b949e;
-        --accent-color: #00d4ff;
-        --accent-warm: #fbbf24;
-        --accent-warm-light: #fcd34d;
-        --accent-warm-bg: rgba(251, 191, 36, 0.1);
-        --text-color: #c9d1d9;
-        --text-muted: #8b949e;
-        --bg-color: #0d1117;
-        --card-bg: #161b22;
-        --card-bg-glass: rgba(22, 27, 34, 0.8);
-        --hover-color: #79c0ff;
-        --border-color: rgba(139, 148, 158, 0.2);
-        --border-color-glass: rgba(88, 166, 255, 0.2);
-        --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
-        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
-        --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.6);
-        --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.7);
-        --shadow-glow: 0 0 30px rgba(88, 166, 255, 0.2);
-        --shadow-color: rgba(0, 0, 0, 0.3);
-        --glass-bg: rgba(22, 27, 34, 0.85);
-        --glass-border: rgba(88, 166, 255, 0.15);
-        --gradient-primary: linear-gradient(135deg, #161b22 0%, #21262d 50%, #30363d 100%);
-        --gradient-mesh: radial-gradient(at 40% 20%, rgba(88, 166, 255, 0.1) 0px, transparent 50%),
-                         radial-gradient(at 80% 0%, rgba(139, 148, 158, 0.1) 0px, transparent 50%),
-                         radial-gradient(at 0% 50%, rgba(88, 166, 255, 0.08) 0px, transparent 50%);
-        --focus-ring-color: #58a6ff;
-    }
-}
-
-/* Manual dark mode toggle class */
 html.dark-mode {
     --primary-color: #58a6ff;
     --primary-light: #79c0ff;
