@@ -186,10 +186,6 @@ img {
 /* ==========================================================================
    Focus States - Accessibility
    ========================================================================== */
-:focus {
-    outline: none;
-}
-
 :focus-visible {
     outline: 3px solid var(--focus-ring-color);
     outline-offset: var(--focus-ring-offset);
@@ -1541,12 +1537,12 @@ html.dark-mode .publication-thumbnail {
     visibility: hidden;
 }
 
-/* Research Area Cards */
-.research-card {
+/* Research Area Cards - uses .cv-item.research-card for specificity over .cv-item */
+.cv-item.research-card {
     position: relative;
-    padding: 0.75rem 0.75rem 0.75rem 3rem !important;
+    padding: 0.75rem 0.75rem 0.75rem 3rem;
     border-radius: 10px;
-    border-bottom: none !important;
+    border-bottom: none;
     margin-bottom: 0.5rem;
     transition: all 0.3s ease;
 }
@@ -1563,39 +1559,39 @@ html.dark-mode .publication-thumbnail {
     opacity: 0.85;
 }
 
-.research-card--vlm {
+.cv-item.research-card--vlm {
     background: rgba(99, 102, 241, 0.06);
-    border-left: 3px solid rgba(99, 102, 241, 0.4) !important;
+    border-left: 3px solid rgba(99, 102, 241, 0.4);
 }
 .research-card--vlm .research-icon { color: #6366f1; }
 
-.research-card--distill {
+.cv-item.research-card--distill {
     background: rgba(245, 158, 11, 0.06);
-    border-left: 3px solid rgba(245, 158, 11, 0.4) !important;
+    border-left: 3px solid rgba(245, 158, 11, 0.4);
 }
 .research-card--distill .research-icon { color: #f59e0b; }
 
-.research-card--3d {
+.cv-item.research-card--3d {
     background: rgba(16, 185, 129, 0.06);
-    border-left: 3px solid rgba(16, 185, 129, 0.4) !important;
+    border-left: 3px solid rgba(16, 185, 129, 0.4);
 }
 .research-card--3d .research-icon { color: #10b981; }
 
-.research-card--fewshot {
+.cv-item.research-card--fewshot {
     background: rgba(236, 72, 153, 0.06);
-    border-left: 3px solid rgba(236, 72, 153, 0.4) !important;
+    border-left: 3px solid rgba(236, 72, 153, 0.4);
 }
 .research-card--fewshot .research-icon { color: #ec4899; }
 
-.research-card--tta {
+.cv-item.research-card--tta {
     background: rgba(0, 212, 255, 0.06);
-    border-left: 3px solid rgba(0, 212, 255, 0.4) !important;
+    border-left: 3px solid rgba(0, 212, 255, 0.4);
 }
 .research-card--tta .research-icon { color: #00d4ff; }
 
-.research-card--applied {
+.cv-item.research-card--applied {
     background: rgba(245, 158, 11, 0.04);
-    border-left: 3px solid rgba(139, 92, 246, 0.4) !important;
+    border-left: 3px solid rgba(139, 92, 246, 0.4);
 }
 .research-card--applied .research-icon { color: #8b5cf6; }
 
@@ -2075,8 +2071,8 @@ html.dark-mode .visitor-counter {
     }
 
     /* Research cards - reduce left padding for icons */
-    .research-card {
-        padding: 0.6rem 0.6rem 0.6rem 2.5rem !important;
+    .cv-item.research-card {
+        padding: 0.6rem 0.6rem 0.6rem 2.5rem;
     }
 
     .research-icon {
@@ -2199,8 +2195,8 @@ html.dark-mode .visitor-counter {
     }
 
     /* Research cards - compact on small screens */
-    .research-card {
-        padding: 0.5rem 0.5rem 0.5rem 2.25rem !important;
+    .cv-item.research-card {
+        padding: 0.5rem 0.5rem 0.5rem 2.25rem;
     }
 
     .research-icon {
