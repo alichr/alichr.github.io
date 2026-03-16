@@ -65,7 +65,7 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
 })();
 
 // Count-up animation for metric numbers
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function animateCountUp(el) {
@@ -101,7 +101,6 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
         requestAnimationFrame(step);
     }
 
-    // Observe count-up elements
     var countEls = document.querySelectorAll('.count-up');
     if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(function(entries) {
@@ -118,16 +117,7 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
             el.textContent = el.getAttribute('data-target') + (el.getAttribute('data-suffix') || '');
         });
     }
-
-    // Fallback: if any count-up elements still show 0 after 1s, force them
-    setTimeout(function() {
-        countEls.forEach(function(el) {
-            if (el.textContent === '0' || el.textContent === '0+') {
-                animateCountUp(el);
-            }
-        });
-    }, 1000);
-})();
+});
 
 // Citation chart (wrapped in DOMContentLoaded since Chart.js is deferred)
 var citationChart;
