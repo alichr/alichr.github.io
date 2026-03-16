@@ -61,41 +61,41 @@ def update_html_file(file_path, citation_data):
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
 
-        # Update total citations (stats panel)
+        # Update total citations (stats panel - with count-up data-target)
         content = re.sub(
-            r'(<span class="stat-label">Total Citations</span>\s*<span class="stat-value">)\d+',
+            r'(<span class="stat-label">Total Citations</span>\s*<span class="stat-value[^"]*" data-target=")\d+',
             f'\\g<1>{citation_data["total_citations"]}',
             content,
             flags=re.DOTALL
         )
 
-        # Update h-index (stats panel)
+        # Update h-index (stats panel - with count-up data-target)
         content = re.sub(
-            r'(<span class="stat-label">h-index</span>\s*<span class="stat-value">)\d+',
+            r'(<span class="stat-label">h-index</span>\s*<span class="stat-value[^"]*" data-target=")\d+',
             f'\\g<1>{citation_data["h_index"]}',
             content,
             flags=re.DOTALL
         )
 
-        # Update i10-index (stats panel)
+        # Update i10-index (stats panel - with count-up data-target)
         content = re.sub(
-            r'(<span class="stat-label">i10-index</span>\s*<span class="stat-value">)\d+',
+            r'(<span class="stat-label">i10-index</span>\s*<span class="stat-value[^"]*" data-target=")\d+',
             f'\\g<1>{citation_data["i10_index"]}',
             content,
             flags=re.DOTALL
         )
 
-        # Update header metric badges
+        # Update header metric badges (with count-up data-target)
         content = re.sub(
-            r'(<span class="metric-value">)\d+\+?(</span>\s*<span class="metric-label">Citations)',
-            f'\\g<1>{citation_data["total_citations"]}+\\g<2>',
+            r'(<span class="metric-value[^"]*" data-target=")\d+(" data-suffix="\+">\d+\+</span>\s*<span class="metric-label">Citations)',
+            f'\\g<1>{citation_data["total_citations"]}\\g<2>',
             content,
             flags=re.DOTALL
         )
 
         content = re.sub(
-            r'(<span class="metric-value">)\d+(</span>\s*<span class="metric-label">h-index)',
-            f'\\g<1>{citation_data["h_index"]}\\g<2>',
+            r'(<span class="metric-value[^"]*" data-target=")\d+(">)\d+(</span>\s*<span class="metric-label">h-index)',
+            f'\\g<1>{citation_data["h_index"]}\\g<2>{citation_data["h_index"]}\\g<3>',
             content,
             flags=re.DOTALL
         )

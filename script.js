@@ -44,6 +44,82 @@
 // Update copyright year
 document.getElementById('current-year').textContent = new Date().getFullYear();
 
+// Scroll progress bar
+(function() {
+    var progressBar = document.querySelector('.scroll-progress');
+    if (!progressBar) return;
+
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(function() {
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                progressBar.style.width = progress + '%';
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+})();
+
+// Count-up animation for metric numbers
+(function() {
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function animateCountUp(el) {
+        var target = parseInt(el.getAttribute('data-target'), 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        if (isNaN(target)) return;
+
+        if (prefersReducedMotion) {
+            el.textContent = target + suffix;
+            return;
+        }
+
+        var duration = 1500;
+        var startTime = null;
+
+        function easeOutQuart(t) {
+            return 1 - Math.pow(1 - t, 4);
+        }
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var elapsed = timestamp - startTime;
+            var progress = Math.min(elapsed / duration, 1);
+            var easedProgress = easeOutQuart(progress);
+            var current = Math.round(easedProgress * target);
+            el.textContent = current + suffix;
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            }
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    // Observe count-up elements
+    var countEls = document.querySelectorAll('.count-up');
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    animateCountUp(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        countEls.forEach(function(el) { observer.observe(el); });
+    } else {
+        countEls.forEach(function(el) {
+            el.textContent = el.getAttribute('data-target') + (el.getAttribute('data-suffix') || '');
+        });
+    }
+})();
+
 // Citation chart (wrapped in DOMContentLoaded since Chart.js is deferred)
 var citationChart;
 document.addEventListener('DOMContentLoaded', function() {
@@ -137,9 +213,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 })();
 
-// Scroll reveal animations
+// Scroll reveal animations (including staggered reveals)
 (function() {
-    var reveals = document.querySelectorAll('.reveal');
+    var reveals = document.querySelectorAll('.reveal, .reveal-stagger');
     if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {

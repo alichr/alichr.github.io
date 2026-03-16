@@ -111,7 +111,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=JetBrains+Mono:wght@500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script>
         // Prevent flash of wrong theme
@@ -127,6 +127,9 @@
 </head>
 
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+
     <!-- Skip Link for Accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -148,15 +151,15 @@
 
                     <div class="hero-metrics" aria-label="Citation metrics">
                         <a href="https://scholar.google.com/citations?user=QT0EXIkAAAAJ" target="_blank" rel="noopener noreferrer" class="metric-badge">
-                            <span class="metric-value">948+</span>
+                            <span class="metric-value count-up" data-target="948" data-suffix="+">0+</span>
                             <span class="metric-label">Citations</span>
                         </a>
                         <a href="https://scholar.google.com/citations?user=QT0EXIkAAAAJ" target="_blank" rel="noopener noreferrer" class="metric-badge">
-                            <span class="metric-value">12</span>
+                            <span class="metric-value count-up" data-target="12">0</span>
                             <span class="metric-label">h-index</span>
                         </a>
                         <span class="metric-badge">
-                            <span class="metric-value">28</span>
+                            <span class="metric-value count-up" data-target="28">0</span>
                             <span class="metric-label">Papers</span>
                         </span>
                     </div>
@@ -198,7 +201,7 @@
             <div class="cv-grid">
                 <div class="cv-col">
                     <h2 id="research-heading">Research Areas</h2>
-                    <div class="cv-list research-list">
+                    <div class="cv-list research-list reveal-stagger">
                         <div class="cv-item research-card research-card--vlm">
                             <span class="research-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/><path d="M8 12a4 4 0 0 1 8 0"/></svg></span>
                             <span class="cv-title">Vision-Language Models</span>
@@ -221,7 +224,7 @@
                 </div>
                 <div class="cv-col">
                     <h2 class="research-col-heading">&nbsp;</h2>
-                    <div class="cv-list research-list">
+                    <div class="cv-list research-list reveal-stagger">
                         <div class="cv-item research-card research-card--fewshot">
                             <span class="research-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
                             <span class="cv-title">Few-Shot &amp; Incremental Learning</span>
@@ -336,15 +339,15 @@
                     <h3 id="citation-metrics-heading">Citation Metrics</h3>
                     <div class="stat-item">
                         <span class="stat-label">Total Citations</span>
-                        <span class="stat-value">948</span>
+                        <span class="stat-value count-up" data-target="948">0</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-label">h-index</span>
-                        <span class="stat-value">12</span>
+                        <span class="stat-value count-up" data-target="12">0</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-label">i10-index</span>
-                        <span class="stat-value">13</span>
+                        <span class="stat-value count-up" data-target="13">0</span>
                     </div>
                 </div>
             </div>
