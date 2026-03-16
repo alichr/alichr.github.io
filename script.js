@@ -111,13 +111,22 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.3 });
+        }, { threshold: 0 });
         countEls.forEach(function(el) { observer.observe(el); });
     } else {
         countEls.forEach(function(el) {
             el.textContent = el.getAttribute('data-target') + (el.getAttribute('data-suffix') || '');
         });
     }
+
+    // Fallback: if any count-up elements still show 0 after 1s, force them
+    setTimeout(function() {
+        countEls.forEach(function(el) {
+            if (el.textContent === '0' || el.textContent === '0+') {
+                animateCountUp(el);
+            }
+        });
+    }, 1000);
 })();
 
 // Citation chart (wrapped in DOMContentLoaded since Chart.js is deferred)
