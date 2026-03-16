@@ -107,40 +107,14 @@ def update_html_file(file_path, citation_data):
             content
         )
 
-        # Update chart data
-        citations_per_year = citation_data['citations_per_year']
-        years = sorted(citations_per_year.keys())
-
-        if years:
-            # Create labels and data arrays
-            labels_str = ', '.join([f"'{year}'" for year in years])
-            data_str = ', '.join([str(citations_per_year[year]) for year in years])
-
-            # Update labels in the chart
-            content = re.sub(
-                r"(labels: \[)[^\]]*(\],)",
-                f"\\g<1>{labels_str}\\g<2>",
-                content
-            )
-
-            # Update data array in the chart (matches the line with citation marker comment)
-            content = re.sub(
-                r"(data: \[)[^\]]*(], // citation data per year)",
-                f"\\g<1>{data_str}\\g<2>",
-                content
-            )
-
         # Write updated content
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(content)
 
-        print(f"✓ Successfully updated citation data")
+        print(f"✓ Successfully updated {file_path}")
         print(f"  Total Citations: {citation_data['total_citations']}")
         print(f"  h-index: {citation_data['h_index']}")
         print(f"  i10-index: {citation_data['i10_index']}")
-        print(f"  Years with data: {len(years)}")
-        if years:
-            print(f"  Year range: {min(years)} - {max(years)}")
 
         return True
 
@@ -150,11 +124,60 @@ def update_html_file(file_path, citation_data):
         traceback.print_exc()
         return False
 
+
+def update_js_file(js_path, citation_data):
+    """Update the script.js file with new chart data"""
+    try:
+        citations_per_year = citation_data['citations_per_year']
+        years = sorted(citations_per_year.keys())
+
+        if not years:
+            print("No per-year citation data to update in chart")
+            return True
+
+        with open(js_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        labels_str = ', '.join([f"'{year}'" for year in years])
+        data_str = ', '.join([str(citations_per_year[year]) for year in years])
+
+        # Update labels array in the chart
+        content = re.sub(
+            r"(labels: \[)[^\]]*(\])",
+            f"\\g<1>{labels_str}\\g<2>",
+            content,
+            count=1
+        )
+
+        # Update the first data array in the chart (citation counts)
+        content = re.sub(
+            r"(data: \[)[^\]]*(\])",
+            f"\\g<1>{data_str}\\g<2>",
+            content,
+            count=1
+        )
+
+        with open(js_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+
+        print(f"✓ Successfully updated {js_path}")
+        print(f"  Years with data: {len(years)}")
+        print(f"  Year range: {min(years)} - {max(years)}")
+
+        return True
+
+    except Exception as e:
+        print(f"Error updating JS file: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
 def main():
     """Main function"""
     # Your Google Scholar ID
     scholar_id = 'QT0EXIkAAAAJ'
     html_file = 'index.html'
+    js_file = 'script.js'
 
     # Get API key from environment variable
     api_key = os.environ.get('SERPAPI_KEY')
@@ -171,7 +194,11 @@ def main():
 
     print(f"\nUpdating {html_file}...")
     success = update_html_file(html_file, citation_data)
+    if not success:
+        sys.exit(1)
 
+    print(f"\nUpdating {js_file}...")
+    success = update_js_file(js_file, citation_data)
     if not success:
         sys.exit(1)
 

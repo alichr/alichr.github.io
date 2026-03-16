@@ -35,7 +35,7 @@ jobs:
         run: |
           git config --global user.name 'Citation Bot'
           git config --global user.email 'actions@github.com'
-          git add index.html
+          git add index.html script.js
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
