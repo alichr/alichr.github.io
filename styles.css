@@ -1590,6 +1590,12 @@ html.dark-mode .publication-thumbnail {
 }
 .research-card--vlm .research-icon { color: #6366f1; }
 
+.cv-item.research-card--mllm {
+    background: rgba(239, 68, 68, 0.06);
+    border-left: 3px solid rgba(239, 68, 68, 0.4);
+}
+.research-card--mllm .research-icon { color: #ef4444; }
+
 .cv-item.research-card--distill {
     background: rgba(245, 158, 11, 0.06);
     border-left: 3px solid rgba(245, 158, 11, 0.4);
@@ -1625,6 +1631,7 @@ html.dark-mode .publication-thumbnail {
 }
 
 html.dark-mode .research-card--vlm { background: rgba(99, 102, 241, 0.08); }
+html.dark-mode .research-card--mllm { background: rgba(239, 68, 68, 0.08); }
 html.dark-mode .research-card--distill { background: rgba(245, 158, 11, 0.08); }
 html.dark-mode .research-card--3d { background: rgba(16, 185, 129, 0.08); }
 html.dark-mode .research-card--fewshot { background: rgba(236, 72, 153, 0.08); }

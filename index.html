@@ -59,7 +59,7 @@
             "https://github.com/alichr",
             "https://scholar.google.com/citations?user=QT0EXIkAAAAJ"
         ],
-        "knowsAbout": ["Computer Vision", "Machine Learning", "Vision-Language Models", "Knowledge Distillation", "3D Point Clouds"]
+        "knowsAbout": ["Computer Vision", "Machine Learning", "Vision-Language Models", "Multi-modal Large Language Models", "Knowledge Distillation", "3D Point Clouds"]
     }
     </script>
     <script type="application/ld+json">
@@ -207,6 +207,12 @@
                             <span class="cv-title">Vision-Language Models</span>
                             <div class="cv-sub">CLIP adaptation, prompt-guided generation, VLM test-time adaptation</div>
                             <div class="research-venues">9 papers &middot; CVPR, AAAI, BMVC, CVIU, DICTA</div>
+                        </div>
+                        <div class="cv-item research-card research-card--mllm">
+                            <span class="research-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg></span>
+                            <span class="cv-title">Multi-modal Large Language Models</span>
+                            <div class="cv-sub">LVLM hallucination mitigation, training-free model editing, counterfactual reasoning</div>
+                            <div class="research-venues">2 papers &middot; CVPR, BMVC</div>
                         </div>
                         <div class="cv-item research-card research-card--distill">
                             <span class="research-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M9 3v12l-3 3h12l-3-3V3"/><path d="M9 3h6"/><path d="M7 18h10"/></svg></span>
@@ -360,6 +366,7 @@
                 <div class="pub-filters" role="group" aria-label="Filter publications by topic">
                     <button class="filter-btn active" data-filter="all" type="button">All</button>
                     <button class="filter-btn" data-filter="vlm" type="button">VLMs</button>
+                    <button class="filter-btn" data-filter="mllm" type="button">MLLMs</button>
                     <button class="filter-btn" data-filter="distillation" type="button">Distillation</button>
                     <button class="filter-btn" data-filter="3d" type="button">3D Points</button>
                     <button class="filter-btn" data-filter="few-shot" type="button">Few-Shot</button>
@@ -368,7 +375,7 @@
 
                 <h4>2026</h4>
                 <ul>
-                    <li data-topic="vlm">
+                    <li data-topic="vlm mllm">
                         <img src="./images/papers/Fighting_Hallucinations_with_Counterfactuals_Diffusion-Guided_Perturbations_for_LVLM_Hallucination_Suppression.webp" alt="" class="publication-thumbnail" loading="lazy" width="130" height="90">
                         <article class="publication-content">
                             <a href="https://arxiv.org/abs/2603.10470" target="_blank" rel="noopener noreferrer"><strong>Fighting Hallucinations with Counterfactuals: Diffusion-Guided Perturbations for LVLM Hallucination Suppression</strong></a><br>
@@ -392,7 +399,7 @@
                             AAAI 2026 <span class="venue-badge tier-1">Rank A*</span>
                         </article>
                     </li>
-                    <li data-topic="vlm">
+                    <li data-topic="vlm mllm">
                         <img src="./images/papers/Beyond_Global_Editing_Per-Instance_Disentangled_Subspaces_for_Training-Free_Hallucination_Mitigation_in_LVLMs.webp" alt="" class="publication-thumbnail" loading="lazy" width="130" height="90">
                         <article class="publication-content">
                             <strong>Beyond Global Editing: Per-Instance Disentangled Subspaces for Training-Free Hallucination Mitigation in LVLMs</strong><br>

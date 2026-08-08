@@ -311,9 +311,10 @@ document.addEventListener('DOMContentLoaded', function() {
             filterBtns.forEach(function(b) { b.classList.remove('active'); });
             this.classList.add('active');
 
-            // Filter publications
+            // Filter publications (exact token match — 'vlm' must not match 'mllm')
             pubItems.forEach(function(item) {
-                if (filter === 'all' || item.getAttribute('data-topic').indexOf(filter) !== -1) {
+                var topics = item.getAttribute('data-topic').split(' ');
+                if (filter === 'all' || topics.indexOf(filter) !== -1) {
                     item.style.display = '';
                 } else {
                     item.style.display = 'none';
