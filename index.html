@@ -110,7 +110,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=JetBrains+Mono:wght@500&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script>
@@ -151,7 +151,7 @@
 
                     <div class="hero-metrics" aria-label="Citation metrics">
                         <a href="https://scholar.google.com/citations?user=QT0EXIkAAAAJ" target="_blank" rel="noopener noreferrer" class="metric-badge">
-                            <span class="metric-value count-up" data-target="1032" data-suffix="+">0+</span>
+                            <span class="metric-value count-up" data-target="1032" data-suffix="+">1032+</span>
                             <span class="metric-label">Citations</span>
                         </a>
                         <a href="https://scholar.google.com/citations?user=QT0EXIkAAAAJ" target="_blank" rel="noopener noreferrer" class="metric-badge">
@@ -159,7 +159,7 @@
                             <span class="metric-label">h-index</span>
                         </a>
                         <span class="metric-badge">
-                            <span class="metric-value count-up" data-target="28">0</span>
+                            <span class="metric-value count-up" data-target="28">28</span>
                             <span class="metric-label">Papers</span>
                         </span>
                     </div>
@@ -223,7 +223,7 @@
                     </div>
                 </div>
                 <div class="cv-col">
-                    <h2 class="research-col-heading">&nbsp;</h2>
+                    <h2 class="research-col-heading" aria-hidden="true">&nbsp;</h2>
                     <div class="cv-list research-list reveal-stagger">
                         <div class="cv-item research-card research-card--fewshot">
                             <span class="research-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
@@ -253,6 +253,7 @@
         <section class="news-section reveal" aria-labelledby="news-heading">
             <h2 id="news-heading">News</h2>
             <ul>
+                <li>Our paper "Beyond Global Editing: Per-Instance Disentangled Subspaces for Training-Free Hallucination Mitigation in LVLMs" has been accepted to <span class="venue">BMVC'26</span></li>
                 <li>New work out: <a href="https://steerseg.github.io/" target="_blank" rel="noopener noreferrer">"SteerSeg: Attention Steering for Reasoning Video Segmentation"</a></li>
                 <li>Our paper "Fighting Hallucinations with Counterfactuals: Diffusion-Guided Perturbations for LVLM Hallucination Suppression" has been accepted to <span class="venue">CVPR'26</span></li>
                 <li>I am serving as Doctoral Consortium Chair for <a href="https://bmvc2026.bmva.org/people/organisers/" target="_blank" rel="noopener noreferrer"><span class="venue">BMVC 2026</span></a>, the 37th British Machine Vision Conference, held in Lancaster, UK</li>
@@ -334,21 +335,21 @@
             <div class="stats-container">
                 <div class="citation-graph" aria-label="Citations over time chart">
                     <h3>Citations Over Time</h3>
-                    <canvas id="citationChart" aria-label="Bar chart showing citation counts from 2017 to 2026"></canvas>
+                    <canvas id="citationChart" aria-label="Bar chart showing citation counts per year"></canvas>
                 </div>
                 <div class="citation-stats" aria-labelledby="citation-metrics-heading">
                     <h3 id="citation-metrics-heading">Citation Metrics</h3>
                     <div class="stat-item">
                         <span class="stat-label">Total Citations</span>
-                        <span class="stat-value count-up" data-target="1032">0</span>
+                        <span class="stat-value count-up" data-target="1032">1032</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-label">h-index</span>
-                        <span class="stat-value count-up" data-target="12">0</span>
+                        <span class="stat-value count-up" data-target="12">12</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-label">i10-index</span>
-                        <span class="stat-value count-up" data-target="14">0</span>
+                        <span class="stat-value count-up" data-target="14">14</span>
                     </div>
                 </div>
             </div>
@@ -384,15 +385,23 @@
                         </article>
                     </li>
                     <li data-topic="vlm tta 3d">
-                        <img src="./images/papers/Adapt-As-You-Walk Through the Clouds: Training-Free Online Test-Time Adaptation of 3D Vision-Language Foundation Models.webp" alt="" class="publication-thumbnail" loading="lazy" width="130" height="90">
+                        <img src="./images/papers/Adapt-As-You-Walk_Through_the_Clouds_Training-Free_Online_Test-Time_Adaptation_of_3D_Vision-Language_Foundation_Models.webp" alt="" class="publication-thumbnail" loading="lazy" width="130" height="90">
                         <article class="publication-content">
                             <a href="https://arxiv.org/abs/2511.15311" target="_blank" rel="noopener noreferrer"><strong>Adapt-As-You-Walk Through the Clouds: Training-Free Online Test-Time Adaptation of 3D Vision-Language Foundation Models</strong></a><br>
                             Mehran Tamjidi, Hamidreza Dastmalchi, Mohammadreza Alimoradijazi, Ali Cheraghian, Aijun An, Morteza Saberi<br>
                             AAAI 2026 <span class="venue-badge tier-1">Rank A*</span>
                         </article>
                     </li>
+                    <li data-topic="vlm">
+                        <img src="./images/papers/Beyond_Global_Editing_Per-Instance_Disentangled_Subspaces_for_Training-Free_Hallucination_Mitigation_in_LVLMs.webp" alt="" class="publication-thumbnail" loading="lazy" width="130" height="90">
+                        <article class="publication-content">
+                            <strong>Beyond Global Editing: Per-Instance Disentangled Subspaces for Training-Free Hallucination Mitigation in LVLMs</strong><br>
+                            Ali Cheraghian, Hamidreza Dastmalchi, Hamed Barzamini, Morteza Saberi, Mojtaba Golzan, Shafin Rahman, Hossein Rahmani<br>
+                            BMVC 2026 <span class="venue-badge tier-2">Rank A</span>
+                        </article>
+                    </li>
                     <li data-topic="distillation">
-                        <img src="./images/papers/SDMD: Subspace-Driven Model Distillation in Indefinite Inner Product Spaces.webp" alt="" class="publication-thumbnail" loading="lazy" width="130" height="90">
+                        <img src="./images/papers/SDMD_Subspace-Driven_Model_Distillation_in_Indefinite_Inner_Product_Spaces.webp" alt="" class="publication-thumbnail" loading="lazy" width="130" height="90">
                         <article class="publication-content">
                             <a href="https://openaccess.thecvf.com/content/WACV2026/html/Hayder_Subspace-Guided_Knowledge_Distillation_for_Efficient_Model_Transfer_WACV_2026_paper.html" target="_blank" rel="noopener noreferrer"><strong>SDMD: Subspace-Driven Model Distillation in Indefinite Inner Product Spaces</strong></a><br>
                             Zeeshan Hayder, Ali Cheraghian, Lars Petersson, Mehrtash Harandi<br>
@@ -404,7 +413,7 @@
                 <h4>2025</h4>
                 <ul>
                     <li data-topic="distillation">
-                        <img src="./images/papers/LumiNet: Perception-Driven Knowledge Distillation.webp" alt="" class="publication-thumbnail" loading="lazy" width="130" height="90">
+                        <img src="./images/papers/LumiNet_Perception-Driven_Knowledge_Distillation.webp" alt="" class="publication-thumbnail" loading="lazy" width="130" height="90">
                         <article class="publication-content">
                             <a href="https://arxiv.org/abs/2310.03669" target="_blank" rel="noopener noreferrer"><strong>LumiNet: Perception-Driven Knowledge Distillation via Statistical Logit Calibration</strong></a><br>
                             MI Hossain, MM Lutfe Elahi, S Ramasinghe, A Cheraghian, F Rahman, N Mohammed, S Rahman<br>

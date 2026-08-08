@@ -122,16 +122,28 @@ document.addEventListener('DOMContentLoaded', function() {
 // Citation chart (wrapped in DOMContentLoaded since Chart.js is deferred)
 var citationChart;
 document.addEventListener('DOMContentLoaded', function() {
-    var ctx = document.getElementById('citationChart').getContext('2d');
+    var canvas = document.getElementById('citationChart');
+    if (!canvas || typeof Chart === 'undefined') return;
+    var ctx = canvas.getContext('2d');
     var isDark = document.documentElement.classList.contains('dark-mode');
 
+    var chartData = {
+        labels: ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'],
+        datasets: [{
+            label: 'Citations',
+            data: [3, 5, 9, 25, 44, 112, 203, 236, 266, 117],
+            borderWidth: 1,
+            borderRadius: 5
+        }]
+    };
+
     // Generate gradient blue colors for bars (lighter to darker)
-    var barCount = 10;
+    var barCount = chartData.labels.length;
     var bgColors = [];
     var borderColors = [];
     var hoverColors = [];
     for (var i = 0; i < barCount; i++) {
-        var t = i / (barCount - 1);
+        var t = barCount > 1 ? i / (barCount - 1) : 1;
         var r = Math.round(180 - t * 150);
         var g = Math.round(210 - t * 80);
         var b = Math.round(255 - t * 30);
@@ -139,21 +151,13 @@ document.addEventListener('DOMContentLoaded', function() {
         borderColors.push('rgba(' + r + ',' + g + ',' + b + ',1)');
         hoverColors.push('rgba(' + r + ',' + g + ',' + b + ',0.9)');
     }
+    chartData.datasets[0].backgroundColor = bgColors;
+    chartData.datasets[0].borderColor = borderColors;
+    chartData.datasets[0].hoverBackgroundColor = hoverColors;
 
     citationChart = new Chart(ctx, {
         type: 'bar',
-        data: {
-            labels: ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'],
-            datasets: [{
-                label: 'Citations',
-                data: [3, 5, 9, 25, 44, 112, 203, 236, 266, 117],
-                backgroundColor: bgColors,
-                borderColor: borderColors,
-                borderWidth: 1,
-                borderRadius: 5,
-                hoverBackgroundColor: hoverColors
-            }]
-        },
+        data: chartData,
         options: {
             responsive: true,
             maintainAspectRatio: false,
@@ -206,6 +210,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (toggle && older) {
         toggle.addEventListener('click', function() {
             var isExpanded = older.classList.toggle('expanded');
+            // Use the real content height so long lists never get clipped
+            older.style.maxHeight = isExpanded ? older.scrollHeight + 'px' : '';
             toggle.setAttribute('aria-expanded', isExpanded);
             toggle.textContent = isExpanded ? 'Show less' : 'Show older news';
         });
@@ -252,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 150);
 
             setTimeout(function() {
-                window.open(chatbotButton.href, '_blank');
+                window.open(chatbotButton.href, '_blank', 'noopener,noreferrer');
             }, 200);
         });
 
@@ -275,9 +281,13 @@ document.addEventListener('DOMContentLoaded', function() {
         var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
-                    var id = entry.target.querySelector('h2').id;
+                    // A section may contain several headings (e.g. Education + Experience)
+                    var ids = [];
+                    entry.target.querySelectorAll('h2[id]').forEach(function(h) {
+                        ids.push('#' + h.id);
+                    });
                     navLinks.forEach(function(link) {
-                        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                        link.classList.toggle('active', ids.indexOf(link.getAttribute('href')) !== -1);
                     });
                 }
             });
