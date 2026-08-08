@@ -297,6 +297,41 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 })();
 
+// Visitor counter (Abacus API) — counts once per browser session
+(function() {
+    var counter = document.getElementById('visitor-counter');
+    var countEl = document.getElementById('visitor-count');
+    if (!counter || !countEl || !window.fetch) return;
+
+    var alreadyCounted = false;
+    try { alreadyCounted = !!sessionStorage.getItem('visit-counted'); } catch (e) {}
+
+    var endpoint = alreadyCounted ? 'get' : 'hit';
+    fetch('https://abacus.jasoncameron.dev/' + endpoint + '/alichr-github-io/visits')
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (typeof data.value !== 'number') return;
+            try { sessionStorage.setItem('visit-counted', '1'); } catch (e) {}
+            counter.hidden = false;
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                countEl.textContent = data.value.toLocaleString();
+                return;
+            }
+            var duration = 1200;
+            var startTime = null;
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var progress = Math.min((timestamp - startTime) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 4);
+                countEl.textContent = Math.round(eased * data.value).toLocaleString();
+                if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        })
+        .catch(function() {}); // fail silently — counter stays hidden
+})();
+
 // Publication topic filters
 (function() {
     var filterBtns = document.querySelectorAll('.filter-btn');

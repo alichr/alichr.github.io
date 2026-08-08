@@ -1806,15 +1806,24 @@ html.dark-mode .visitor-counter {
     font-weight: 600;
 }
 
-.visitor-counter a {
-    display: flex;
-    align-items: center;
+.visitor-counter[hidden] {
+    display: none;
 }
 
-.visitor-counter img {
-    border: 0;
+.visitor-icon {
     display: block;
-    border-radius: 4px;
+    opacity: 0.8;
+}
+
+.visitor-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.visitor-counter-label {
+    opacity: 0.85;
 }
 
 /* ==========================================================================
