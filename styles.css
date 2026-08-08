@@ -1050,6 +1050,13 @@ main {
     z-index: 1;
 }
 
+/* Centered full-width row for an odd research card */
+.cv-col--center {
+    grid-column: 1 / -1;
+    width: calc(50% - 1rem);
+    margin: 0 auto;
+}
+
 .cv-list {
     position: relative;
 }
@@ -1122,6 +1129,9 @@ main {
     .cv-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+    .cv-col--center {
+        width: 100%;
     }
 }
 
