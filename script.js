@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
         labels: ['2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'],
         datasets: [{
             label: 'Citations',
-            data: [3, 5, 8, 25, 46, 115, 199, 227, 268, 178],
+            data: [3, 5, 8, 25, 46, 115, 199, 226, 268, 186],
             borderWidth: 1,
             borderRadius: 5
         }]
